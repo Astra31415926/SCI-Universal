@@ -3,24 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SCI Universal Model | Spectral Channel Integrity</title>
+    <title>SCI MODEL - Воспроизводимость структуры цветового сигнала</title>
     
-    <!-- Fonts: IBM Plex Sans, Inter, Source Sans Pro -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- MathJax -->
+    <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['$$', '$$']],
+        processEscapes: true
+      },
+      options: {
+        ignoreHtmlClass: 'tex2jax_ignore',
+        processHtmlClass: 'tex2jax_process'
+      }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/tex-mml-chtml.js"></script>
 
     <style>
-        /* CSS Variables: Scientific Minimalist Palette */
         :root {
-            --bg-white: #ffffff;
-            --bg-light: #f8f9fa;
-            --bg-alt: #f3f4f6;
-            --text-dark: #111827;
-            --text-main: #374151;
-            --text-muted: #6b7280;
-            --border-color: #e5e7eb;
+            /* Color Palette */
+            --bg-color: #0B0F19;
+            --surface-color: #151B2B;
+            --surface-hover: #1E2538;
+            --text-primary: #E2E8F0;
+            --text-secondary: #94A3B8;
+            --accent-primary: #38BDF8; /* Cyan - Science */
+            --accent-secondary: #F472B6; /* Pink - Magenta reference */
+            --accent-tertiary: #FACC15; /* Yellow - Warning */
+            --border-color: #2D3748;
+            
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            
+            /* Typography */
+            --font-main: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
         }
 
         * {
@@ -30,697 +60,619 @@
         }
 
         body {
-            font-family: 'Inter', 'Source Sans Pro', sans-serif;
-            background-color: var(--bg-white);
-            color: var(--text-main);
-            line-height Pt(1.7);
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
 
-        h1, h2, h3, h4 {
-            font-family: 'IBM Plex Sans', sans-serif;
-            color: var(--text-dark);
+        /* Layout */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+        }
+
+        header {
+            padding: var(--spacing-md) 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        header .logo {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--accent-primary);
+            letter-spacing: -0.05em;
+        }
+
+        section {
+            margin-bottom: var(--spacing-lg);
+            padding: var(--spacing-md);
+            background: var(--surface-color);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Typography */
+        h1 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+            background: linear-gradient(to right, var(--text-primary), var(--text-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: 1.5rem;
             font-weight: 600;
-            letter-spacing: -0.02em;
+            margin-bottom: var(--spacing-sm);
+            color: var(--accent-primary);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: var(--spacing-xs);
         }
 
-        a {
-            color: var(--text-main);
-            text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: border-color 0.3s ease;
+        h3 {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-top: var(--spacing-sm);
+            margin-bottom: var(--spacing-xs);
+            font-family: var(--font-mono);
+            color: var(--accent-secondary);
         }
 
-        a:hover {
-            border-color: var(--accent-blue);
+        p, li {
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-sm);
+            text-align: justify;
+        }
+
+        strong {
+            color: var(--text-primary);
+            font-weight: 600;
         }
 
         ul {
-            list-style: none;
-            padding-left: 0;
+            list-style-position: inside;
+            padding-left: var(--spacing-sm);
         }
 
-        /* Container */
-        .container {
-            max-width: 920px;
-            margin: 0 auto;
-            padding: 0 24px;
+        ul li::marker {
+            color: var(--accent-primary);
         }
 
-        /* Sections */
-        section {
-            padding: 100px 0;
+        code {
+            font-family: var(--font-mono);
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-primary);
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+            font-size: 0.9em;
         }
 
-        /* Header */
-        header {
-            padding: 40px 0;
-            border-bottom: 1px solid var(--border-color);
-            position: sticky;
-            top: 0;
-            background: var(--bg-white);
-            z-index: 100;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'IBM Plex Sans', sans-serif;
-            font-weight: 700;
-            font-size: 1.1rem;
-            letter-spacing: 0.05em;
-        }
-
-        nav {
-            display: flex;
-            gap: 20px;
-        }
-
-        nav a {
-            font-size: 0.9rem;
-            color: var(--text-dark);
-        }
-
-        /* Hero */
-        .hero {
-            padding: 80px 0;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            line-height: 1.15;
-            margin-bottom: 0.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .hero h2 {
-            font-size: 1.5rem;
-            font-weight: 300;
-            color: var(--text-muted);
-            margin-bottom: 3rem;
-        }
-
-        .hero p {
-            max-width: 800px;
-            margin-bottom: 3rem;
-            color: var(--text-main);
-        }
-
-        .questions-list {
-            border-left: 2px solid var(--accent-blue);
-            padding-left: 20px;
-            margin-bottom: 3rem;
-        }
-
-        .questions-list li {
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-
-        .questions-list li::before {
-            content: '—';
-            position: absolute;
-            left: -15px;
-            color: var(--accent-blue);
-        }
-
-        /* Content Blocks */
-        .content-block {
-            padding: 60px 0;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .content-block:first-of-type {
-            border-top: none;
-        }
-
-        .content-block h2 {
-            font-size: 1.75rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .content-block h2::after {
-            content: '';
-            display: block;
-            width: 40px;
-            height: 1px;
-            background-color: var(--accent-green); /* Slight color hint for subheaders */
-            margin-top: 10px;
-        }
-
-        .summary-text {
-            font-size: 1.05rem;
-            max-width: 800px;
-            margin-bottom: 2rem;
-            color: var(--text-main);
-        }
-
-        /* Images (Containment - NO CROPPING) */
-        .figure-container {
-            width: 100%;
-            margin: 2rem 0;
-            text-align: center;
-            background: var(--bg-white);
-            padding: 20px;
-            border: 1px solid var(--border-color);
-        }
-        
-        .figure-container img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .figure-caption {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-            margin-top: 0.5rem;
-            font-style: italic;
-            text-align: center;
-            font-family: 'Source Sans Pro', sans-serif;
-        }
-
-        /* Buttons */
+        /* Interactive Spoilers/Accordions */
         details {
-            border-top: 1px solid var(--border-color);
-            padding-top: 1.5rem;
-            margin-top: 2rem;
+            margin-top: var(--spacing-sm);
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        details[open] {
+            border-color: var(--accent-primary);
         }
 
         summary {
             cursor: pointer;
-            font-weight: 500;
-            font-size: 1rem;
-            color: var(--text-main);
-            list-style: none;
-            display: inline-flex;
+            padding: var(--spacing-sm);
+            font-family: var(--font-mono);
+            font-weight: 600;
+            color: var(--accent-primary);
+            background: rgba(56, 189, 248, 0.05);
+            list-style: none; /* Hide default triangle */
+            display: flex;
             align-items: center;
-            gap: 10px;
-            background: none;
+            justify-content: space-between;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: '\f078'; /* FontAwesome chevron-down */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            transition: transform 0.3s ease;
+        }
+
+        details[open] summary::after {
+            transform: rotate(180deg);
         }
 
         summary:hover {
-            color: var(--accent-blue);
+            background: rgba(56, 189, 248, 0.1);
         }
 
-        details .details-content {
-            margin-top: 1.5rem;
-            color: var(--text-main);
-            font-size: 0.95rem;
-        }
-        
-        details .details-content p {
-            margin-bottom: 1.5rem;
-            text-align: justify;
-        }
-        
-        details .details-content strong {
-            font-weight: 600;
-        }
-
-        /* Cards (Applications) */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .card {
-            border-top: 2px solid var(--accent-blue);
-            padding-top: 1.5rem;
-        }
-
-        .card h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .card p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        /* Tools & Generators */
-        .tools-wrapper {
-            background-color: var(--bg-light);
-            padding: 60px 0;
+        .details-content {
+            padding: var(--spacing-md);
             border-top: 1px solid var(--border-color);
+            animation: fadeIn 0.4s ease;
         }
 
-        .generator-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .generator-card {
-            display: block;
-            background: var(--bg-white);
-            border: 1px solid var(--border-color);
-            padding: 2rem;
-            text-decoration: none;
-            color: var(--text-main);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        /* Blockquote/Quote style */
+        blockquote {
+            border-left: 3px solid var(--accent-secondary);
+            padding-left: var(--spacing-sm);
+            margin: var(--spacing-sm) 0;
+            font-style: italic;
+            color: var(--text-primary);
         }
 
-        .generator-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-        }
-
-        .gen-header {
+        /* Images */
+        .scheme-placeholder {
+            width: 100%;
+            height: 300px;
+            background-color: #000;
+            border-radius: 8px;
+            margin: var(--spacing-sm) 0;
+            position: relative;
+            overflow: hidden;
             display: flex;
             align-items: center;
-            gap: 15px;
-            margin-bottom: 1rem;
-            border-bottom: 1px solid var(--bg-alt);
-            padding-bottom: 1rem;
+            justify-content: center;
+            border: 1px dashed var(--border-color);
+        }
+        
+        .scheme-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.6;
+            filter: grayscale(100%) contrast(1.2);
         }
 
-        .gen-thumb {
-            width: 50px;
-            height: 0; /* Fix height to 50px for square icons */
-            height: 50px;
-            object-fit: contain;
-        }
-
-        /* Warning Note */
-        .warning-box {
-            background-color: var(--bg-alt);
-            border-left: 3px solid #9ca3af; /* Neutral Gray */
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            font-size: 0.9rem;
-        }
-
-        /* Documentation */
-        .doc-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 3rem;
-        }
-
-        .doc-item {
-            display: inline-block;
-            border: 1px solid var(--border-color);
-            padding: 6px 14px;
-            border-radius: 2px;
-            font-size: 0.85rem;
-            text-decoration: none;
-            color: var(--text-main);
-            transition: background-color 0.3s ease;
-        }
-
-        .doc-item:hover {
-            background-color: var(--text-dark);
-            color: var(--bg-white);
-            border-color: var(--text-dark);
-        }
-
-        /* Author */
-        .author-section {
-            padding: 80px 0 120px;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .author-container {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            align-items: start;
-        }
-
-        .author-avatar {
-            width: 150px;
-            height: 150px;
+        .scheme-caption {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.8);
+            padding: 5px 10px;
             border-radius: 4px;
-            filter: grayscale(100%);
+            font-size: 0.8rem;
+            font-family: var(--font-mono);
+        }
+
+        /* Tools Section */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-sm);
+        }
+
+        .tool-card {
+            background: var(--surface-hover);
+            padding: var(--spacing-md);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-primary);
+        }
+
+        .btn-tool {
+            background: var(--accent-primary);
+            color: var(--bg-color);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: var(--spacing-xs);
+            font-family: var(--font-mono);
+        }
+        
+        .btn-tool:hover {
             opacity: 0.9;
         }
 
-        .author-contacts {
-            margin-top: 2rem;
+        .warning-box {
+            margin-top: var(--spacing-md);
+            background: rgba(250, 204, 21, 0.1);
+            border: 1px solid var(--accent-tertiary);
+            padding: var(--spacing-sm);
+            border-radius: 8px;
+            color: var(--accent-tertiary);
             font-size: 0.9rem;
         }
 
-        .author-contacts p {
-            margin-bottom: 0.5rem;
+        /* Author Section */
+        .author-card {
             display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .btn-main {
-            display: inline-block;
-            margin-top: 2rem;
-            padding: 12px 24px;
-            background-color: var(--text-dark);
-            color: var(--bg-white);
-            font-family: 'IBM Plex Sans', sans-serif;
-            font-weight: 600;
-            border-radius: 4px;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn-main:hover {
-            background-color: #000;
+            flex-direction: column;
+            gap: var(--spacing-sm);
         }
 
         .btn-link {
-            display: inline-block;
-            margin-top: 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--surface-hover);
+            border: 1px solid var(--accent-secondary);
+            color: var(--accent-secondary);
             text-decoration: none;
-            color: var(--accent-blue);
-            border-bottom: 1px solid transparent;
-            font-weight: 500;
+            padding: var(--spacing-sm);
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.2s;
+            margin-top: var(--spacing-sm);
         }
 
         .btn-link:hover {
-            color: var(--text-dark);
-            border-bottom: 1px solid var(--text-dark);
+            background: var(--accent-secondary);
+            color: var(--bg-color);
         }
 
-        /* Footer */
+        /* Contacts */
+        .contact-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-sm);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            color: var(--text-primary);
+        }
+
+        .contact-item i {
+            color: var(--accent-primary);
+        }
+
         footer {
-            padding: 40px 0;
             text-align: center;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            border-top: 1px solid var(--border-color);
+            padding: var(--spacing-lg) 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--surface-hover);
+            border-left: 4px solid var(--accent-primary);
+            color: var(--text-primary);
+            padding: 15px 20px;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header-content { flex-direction: column; text-align: center; }
-            .logo { margin-bottom: 10px; }
-            .author-container { text-align: center; }
-            .author-avatar { margin: 0 auto; }
-            .questions-list { text-align: left; padding-left: 0; }
-            .content-block { padding: 40px 20px; }
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            h1 { font-size: 1.75rem; }
+            section { padding: var(--spacing-sm); }
+            .contact-list { flex-direction: column; gap: var(--spacing-sm); }
         }
     </style>
 </head>
 <body>
 
     <header>
-    <div class="container header-content">
-        <div class="logo">SCI Universal Model</div>
-        <nav>
-            <a href="#concept">Концепция</a>
-            <a href="#math">Математика</a>
-            <a href="#sync">Калибровка</a>
-            <a href="#apps">Применения</a>
-            <a href="#experiments">Статус</a>
-            <a href="#docs">Документация</a>
-        </nav>
+        <div class="container">
+            <div class="logo">SCI MODEL</div>
+        </div>
     </header>
 
-    <main>
-        <!-- BLOCK 1: CONCEPT -->
-        <section class="hero">
-            <div class="container">
-                <h1>ВОСПРОИЗВОДИМОСТЬ СТРУКТУРЫ ЦВЕТОВОГО СИГНАЛА В СУБТРАКТИВНОЙ СРЕДЕ</h1>
-                <h2>Независимые каналы в физической среде пигментов</h2>
-
-                <p>
-                    Этот сайт посвящен проблеме воспроизводимого представления цветовой информации при переходе между различными физическими средами. Сегодня цифровое изображение, созданное на экране, неизбежно изменяется при печати, сканировании, фотографировании и последующем воспроизведении.
-                </p>
-                <p>
-                    <strong>Цель проекта</strong> — исследование методов воспроизводимого представления структуры цветового сигнала в субтрактивных средах и разработка детерминированных подходов к синхронизации излучающих и отражающих систем.
-                </p>
-
-                <ul class="questions-list">
-                    <li><strong>Природа искажений:</strong> Почему одно и то же изображение выглядит по-разному на экране и на бумаге?</li>
-                    <li><strong>Инвариантность:</strong> Можно ли сохранить структуру сигнала при переходе между физическими средами?</li>
-                    <li><strong>Единый базис:</strong> Возможно ли создать универсальный стандарт для дисплеев, принтеров и сенсоров?</li>
-                </ul>
-
-                <details>
-                    <summary>🔘 ПОДРОБНО: Ограничения перцепционного подхода и цели SCI</summary>
-                    <div class="details-content">
-                        <p>
-                            <strong>Почему ICC недостаточно:</strong> Колориметрический подход использует нелинейные профили и координатную интерполяцию для компенсации спектрального несовершенства красителей. Для систем компьютерного зрения ($Computer Vision$) это влечет за собой ряд ограничений:
-                        </p>
-                        <ul>
-                            <li><strong>Межканальная интерференция (Crosstalk):</strong> Физические спектры поглощения пигментов $R, G, B$ существенно перекрываются. В субтрактивной среде это приводит к искажению сигналов смежных каналов и потере части зашифрованной информации.
-                        </li>
-                            <li><strong>Необратимость:</strong> Из-за каскадной аппроксимации в цикле «экран → печать → сканирование → экран» исходная матрица координат деградирует. Обратное восстановление вектора без жестких спектральных констант математически невозможно.
-                        </li>
-                        </ul>
-                        <p>
-                            <strong>Архитектурный сдвиг SCI:</strong> Модель заменяет визуальную подгонку жестким спектральным разделением. Пространство пигментов принудительно приводится к линейным границам, что делает субтрактивную среду функционально эквивалентной аддитивной матрице дисплея.
-                        </p>
-                    </div>
-                </details>
-            </div>
+    <main class="container">
+        
+        <!-- INTRO -->
+        <section>
+            <h1>ВОСПРОИЗВОДИМОСТЬ СТРУКТУРЫ ЦВЕТОВОГО СИГНАЛА В СУБТРАКТИВНОЙ СРЕДЕ</h1>
+            <h3>Независимые информационные каналы в физической среде пигментов</h3>
+            <br>
+            <p>
+                Этот сайт посвящён проблеме воспроизводимого представления цветовой информации при переходе между различными физическими средами.
+            </p>
+            <p>
+                Изображение, созданное в излучающей RGB-среде, неизбежно изменяется при воспроизведении на физическом носителе. Существующие системы управления цветом (CMS) ориентированы преимущественно на визуальное соответствие человеческому восприятию и не ставят своей целью сохранение структуры сигнала.
+            </p>
+            <p>
+                <strong>Цель проекта</strong> — исследование методов воспроизводимого представления структуры цветового сигнала в субтрактивных средах и разработка детерминированных подходов к синхронизации излучающих и отражающих систем.
+            </p>
+            
+            <br>
+            <h3>Фундаментальные вопросы:</h3>
+            <ul>
+                <li>Почему одно и то же изображение выглядит по-разному на экране и на бумаге?</li>
+                <li>Можно ли сохранить структуру сигнала при переходе между различными физическими средами?</li>
+                <li>Возможно ли сформировать единый физический базис для дисплеев, печатных систем и оптических сенсоров?</li>
+            </ul>
         </section>
 
-        <!-- BLOCK 2: MATH -->
-        <section id="math" class="content-block">
-            <div class="container">
-                <h2>Математическая модель</h2>
-                
-                <p class="summary-text">
-                    Модель использует спектральный ограничитель и общие опорные уровни $U_{ref}$ и $L_{ref}$ для согласования спектральных характеристик различных пигментов.
-                </p>
+        <!-- BLOCK 1 -->
+        <section>
+            <h2>Блок 1. Концептуальное введение</h2>
+            <h3>От перцепционной колориметрии к спектральной воспроизводимости</h3>
+            <ul>
+                <li><strong>Проблема:</strong> Реальные пигменты обладают конечной спектральной селективностью. Их спектры частично перекрываются, вызывая межканальную интерференцию (Crosstalk) и нарушая операциональную независимость цветовых компонент. Стандартные системы управления цветом обеспечивают визуальное соответствие, но не гарантируют сохранения структуры цветового сигнала.</li>
+                <li><strong>Решение SCI:</strong> SCI приводит спектральные характеристики пигментов к общим опорным границам, формируя согласованную среду, в которой становится возможным детерминированное разделение информационных каналов, приближая поведение субтрактивной среды к логике независимых аддитивных каналов.</li>
+            </ul>
 
-                <div class="figure-container">
-                    <img src="sci_spectral_scaling_blueprint.png" alt="Mathematical Model">
-                    <div class="figure-caption">Схема: (A) Независимые каналы. (B) Стандартная печать с Crosstalk. (C) Нормализация SCI.</div>
+            <details>
+                <summary>🔘 Кнопка: [ ПОДРОБНО: Ограничения перцепционного подхода и цели SCI ]</summary>
+                <div class="details-content">
+                    <h3>Сравнительный анализ ограничений ICC и архитектуры SCI</h3>
+                    <p>
+                        Колориметрический подход использует нелинейные профили и координатную интерполяцию для компенсации спектрального несовершенства красителей. Для систем компьютерного зрения (\(Computer\ Vision\)) это влечет за собой ряд ограничений:
+                    </p>
+                    <ul>
+                        <li><strong>Межканальная интерференция (Crosstalk):</strong> Физические спектры поглощения пигментов \(R, G, B\) существенно перекрываются. В субтрактивной среде это приводит к искажению сигналов смежных каналов и потере структурированной информации.</li>
+                        <li><strong>Необратимость сигнального тракта:</strong> Из-за каскадной аппроксимации в цикле «цифровой код \(\rightarrow\) излучение дисплея \(\rightarrow\) субтрактивный оттиск \(\rightarrow\) фотосенсор» исходная матрица координат деградирует. Обратное восстановление вектора без жестких спектральных констант математически невозможно.</li>
+                        <li><strong>Зависимость от метамеризма:</strong> Изменение спектрального состава внешнего освещения дестабилизирует перцепционные профили, что критично для работы автоматизированных оптических систем.</li>
+                    </ul>
+                    <p>
+                        <strong>Архитектурный сдвиг SCI:</strong> Модель заменяет визуальную подгонку жестким спектральным разделением. Пространство пигментов принудительно приводится к линейным границам, что делает субтрактивную среду функционально эквивалентной аддитивной матрице дисплея.
+                    </p>
                 </div>
-
-                <details>
-                    <summary>🔘 ПОДРОБНО: Математическая формализация</summary>
-                    <div class="details-content">
-                        <p>
-                            <strong>Механизм:</strong> В основе модели SCI лежит алгоритм динамического перерасчета координат цветового пространства. Вместо аппроксимации под усредненного наблюдателя, математическое ядро системы принудительно выравнивает спектральные характеристики используемых пигментов по единым опорным границам.
-                        </p>
-                        <p>
-                            <strong>Якорь системы — Пурпур (Magenta):</strong> Базовым «якорем» расчетов выступает пигмент с наименьшей спектральной эффективностью в целевой триаде. Остальные каналы масштабируются и усекаются под его физические возможности. Это формирует строго согласованную среду с предсказуемым поведением.
-                        </p>
-                        <div style="background: var(--bg-alt); padding: 1rem; border-left: 2px solid var(--text-muted);">
-                            <small style="display: block; margin-bottom: 5px; font-weight: bold;">Границы применимости:</small>
-                            Ограничение динамического диапазона неизбежно сужает итоговый цветовой охват системы. Модель SCI создана не для художественной репродукции многоцветных изображений, а исключительно для задач спектрального кодирования данных и прецизионной калибровки систем компьютерного зрения.
-                        </div>
-                    </div>
-                </details>
-            </div>
+            </details>
         </section>
 
-        <!-- BLOCK 2.5: HARDWARE SYNC -->
-        <section id="sync" class="content-block">
-            <div class="container">
-                <h2>Аппаратная синхронизация излучающей и отражающей сред</h2>
-                
-                <p class="summary-text">
-                    Мы исследуем возможность воспроизводимого представления структуры цветового сигнала в физически неоднородных субтрактивных средах. Использование набора полосовых RGB-фильтров в качестве физического эталона позволяет согласовать спектральные свойства дисплея и печатной системы.
-                </p>
+        <!-- BLOCK 2 -->
+        <section>
+            <h2>Блок 2. Математическая модель</h2>
+            <h3>Механизм спектрального масштабирования</h3>
+            <p>
+                В основе модели SCI лежит алгоритм динамического перерасчета координат цветового пространства. SCI использует спектральный ограничитель — компонент с минимальным динамическим диапазоном. Все остальные пигменты нормализуются относительно его физических границ, образуя общую систему опорных уровней. 
+            </p>
+            <p>
+                Такое масштабирование преобразует физически неоднородную среду в систему с предсказуемым спектральным поведением.
+            </p>
 
-                <div class="figure-container">
-                    <img src="main_sci_rss_blueprint.png" alt="Hardware Calibration">
-                    <div class="figure-caption">Схема: Тестовая матрица, RGB-фильтры, LUT.</div>
-                </div>
-
-                <details>
-                    <summary>🔘 ПОДРОБНО: Как фильтры замыкают аппаратный цикл</summary>
-                    <div class="details-content">
-                        <p>
-                            <strong>Физика замкнутого цикла:</strong> Традиционная калибровка пытается программно скорректировать цвета для визуального сходства. Модель SCI решает задачу на уровне физики излучения.
-                        </p>
-                        <p>
-                            <strong>Создание эталона:</strong> Оптические полосовые фильтры ($R, G, B$) задают жесткие, фиксированные границы спектральных каналов.
-                        </p>
-                        <p>
-                            <strong>Аппаратная настройка:</strong> Монитор тестируется и калибруется через эти фильтры. Система изменяет базовые коэффициенты светимости субпикселей матрицы через внутренние таблицы.
-                        </p>
-                        <p>
-                            <strong>Линейное замыкание:</strong> Поскольку и монитор, и печатный процесс приведены к единому спектральному знаменателю через одни и те же оптические фильтры, между ними исчезает зона неопределенности.
-                        </p>
-                    </div>
-                </details>
+            <div class="scheme-placeholder">
+                <!-- Using picsum with grayscale filter for technical placeholder feel -->
+                <img src="https://picsum.photos/seed/scimodelgraph/800/400.jpg?grayscale" alt="Схема спектрального масштабирования">
+                <div class="scheme-caption">(A) Независимые RGB каналы. (B) Стандартная печать. (C) Нормализация SCI</div>
             </div>
+
+            <details>
+                <summary>🔘 Кнопка: [ ПОДРОБНО: Механизм спектрального лимитирования ]</summary>
+                <div class="details-content">
+                    <h3>Якорь системы — Пурпур (Magenta)</h3>
+                    <p>
+                        Базовым «якорем» расчетов выступает пигмент с наименьшей спектральной эффективностью в целевой триаде (пурпурный / маджента). Оставшиеся каналы программно масштабируются и усекаются под его физические возможности. Это позволяет свести физическую нелинейность к математически предсказуемой модели с общими опорными уровнями (\(U_{ref}\), \(L_{ref}\)).
+                    </p>
+                    <p>
+                        В результате спектральные свойства различных компонентов становятся согласованными, а межканальная интерференция приобретает детерминированный характер. Сигналы становятся операционно разделимыми и функционально приближаются к независимым каналам \(RGB\).
+                    </p>
+                    <br>
+                    <h3>Границы применимости</h3>
+                    <p>
+                        Ограничение динамического диапазона неизбежно сужает итоговый цветовой охват системы. Модель SCI создана не для художественной репродукции многоцветных изображений, а исключительно для задач спектрального кодирования данных (Spectrum QR / QRnament) и прецизионной калибровки систем компьютерного зрения. В этих областях математическая независимость каналов приоритетнее визуальной насыщенности.
+                    </p>
+                </div>
+            </details>
         </section>
 
-        <!-- BLOCK 3: APPLICATIONS -->
-        <section id="apps" class="content-block">
-            <div class="container">
-                <h2>Практическое применение</h2>
-                <p class="summary-text">
-                    Модель SCI воспроизводит логику поведения RGB-каналов на физической поверхности. Это позволяет использовать модель как высокоточный инструмент и как устойчивый носитель информации.
-                </p>
+        <!-- BLOCK 2.5 -->
+        <section>
+            <h2>Блок 2.5. Аппаратная калибровка</h2>
+            <h3>Аппаратная синхронизация излучающей и отражающей сред</h3>
+            <p>
+                Мы исследуем возможность воспроизводимого представления структуры цветового сигнала в физически неоднородных субтрактивных средах. Используя комплект узкополосных (полосовых) \(RGB\)-фильтров в качестве физического эталона, можно согласовать спектральные свойства дисплея и печатной системы.
+            </p>
+            <p>
+                Сначала тестовая матрица калибруется на физическом носителе до достижения максимального разделения каналов. Затем тот же эталон используется для настройки дисплея. В результате монитор на уровне аппаратных таблиц (\(LUT\)) перестраивает весовые коэффициенты своих субпикселей. Система жестко ограничивает энергетический вклад каждого канала, блокируя те комбинации сигналов, которые невозможно воспроизвести пигментами на выбранном носителе. 
+            </p>
+            <p>
+                Обе системы начинают работать в пределах общего спектрального базиса: экран отображает изображение строго в границах физического отклика конкретной печатной системы.
+            </p>
 
-                <div class="cards-grid">
-                    <div class="card">
-                        <h4>Spectrum QR</h4>
-                        <p>Многослойное цветовое кодирование данных с использованием независимых каналов.</p>
-                    </div>
-                    <div class="card">
-                        <h4>QRnament</h4>
-                        <p>Встраивание данных в орнаментальные структуры и живопись.</p>
-                    </div>
-                    <div class="card">
-                        <h4>Computer Vision</h4>
-                        <p>Увеличение устойчивости систем машинного анализа за счет устранения межканальных искажений.</p>
-                    </div>
-                    <div class="card">
-                        <h4>Calibration</h4>
-                        <p>Прецизионная калибровка физических устройств.</p>
-                    </div>
+            <details>
+                <summary>🔘 Кнопка: [ ПОДРОБНО: Как фильтры замыкают аппаратный цикл ]</summary>
+                <div class="details-content">
+                    <h3>Физика замкнутого цикла</h3>
+                    <p>
+                        Традиционная калибровка пытается программно скорректировать цвета для визуального сходства. Модель SCI решает задачу на уровне физики излучения:
+                    </p>
+                    <ol>
+                        <li><strong>Создание физического эталона:</strong> Оптические полосовые фильтры (\(R, G, B\)) задают жесткие, фиксированные границы спектральных каналов.</li>
+                        <li><strong>Аппаратная настройка дисплея:</strong> Монитор тестируется и калибруется непосредственно через эти фильтры. Система изменяет базовые коэффициенты светимости субпикселей матрицы через внутренние таблицы откликов.</li>
+                        <li><strong>Линейное замыкание:</strong> Поскольку и монитор, и печатный процесс приведены к единому спектральному знаменателю через одни и те же оптические фильтры, между ними исчезает зона неопределенности. Вся система превращается в единый, математически прозрачный и обратимый тракт.</li>
+                    </ol>
                 </div>
-            </div>
+            </details>
+        </section>
+
+        <!-- BLOCK 3 -->
+        <section>
+            <h2>Блок 3. Практические применения и экспериментальные системы</h2>
+            <h3>Воспроизводимое представление цветовой информации на физическом носителе</h3>
+            <p>
+                Модель SCI рассматривает субтрактивную среду не только как средство визуального воспроизведения изображения, но и как потенциальный носитель структурированной информации. Формирование согласованной спектральной среды открывает возможности для прикладных задач:
+            </p>
+            <ul>
+                <li><strong>Spectrum QR:</strong> Многослойное цветовое кодирование данных с использованием независимых информационных каналов.</li>
+                <li><strong>QRnament:</strong> Интеграция структурированных данных в орнаментальные композиции и художественные изображения с сохранением визуальной целостности.</li>
+                <li><strong>Компьютерное зрение (Computer Vision):</strong> Повышение устойчивости систем машинного анализа к межканальным искажениям и калибровка камер/сенсоров в условиях нестабильности физических носителей.</li>
+                <li><strong>Прецизионная калибровка:</strong> Формирование согласованного спектрального базиса для дисплеев, печатных систем и оптических сенсоров.</li>
+            </ul>
         </section>
 
         <!-- TOOLS SECTION -->
-        <section class="tools-wrapper">
-            <div class="container">
-                <h3>Инструменты и генераторы</h3>
-                
-                <div class="warning-box">
-                    <strong>Примечание:</strong> Данные генераторы создают изображения в исходном цифровом виде, без адаптации к печати. Для корректной печати параметры должны быть согласованы с модель SCI.
+        <section>
+            <h2>Раздел: Инструменты и генераторы</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <i class="fa-solid fa-qrcode fa-3x" style="color: var(--accent-primary); margin-bottom: 1rem;"></i>
+                    <h4>Spectrum QR Generator</h4>
+                    <p style="font-size: 0.9rem;">Создание многослойных цветовых кодов.</p>
+                    <button class="btn-tool" onclick="showDemoMessage()">Запустить генератор</button>
                 </div>
-
-                <div class="generator-grid">
-                    <a href="https://astra31415926.github.io/QR.G.B.-ART/" target="_blank" class="generator-card">
-                        <div class="gen-header">
-                            <img src="Mykhailo Kashkarov.png" class="gen-thumb">
-                            <div>
-                                <h3 style="font-size: 1rem;">Spectrum QR Generator</h3>
-                                <p style="font-size: 0.8rem;">Генерация и сканирование многослойных кодов.</p>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a href="https://astra31415926.github.io/QRnament2/" target="_blank" class="generator-card">
-                        <div class="gen-header">
-                            <img src="qrnament-mandala.png" class="gen-thumb">
-                            <div>
-                                <h3 style="font-size: 1rem;">QRnament Creator</h3>
-                                <p style="font-size:  <0.8rem;">Создание орнаментальных кодов.</p>
-                            </div>
-                        </div>
-                    </a>
+                <div class="tool-card">
+                    <i class="fa-solid fa-palette fa-3x" style="color: var(--accent-secondary); margin-bottom: 1rem;"></i>
+                    <h4>QRnament Creator</h4>
+                    <p style="font-size: 0.9rem;">Интеграция данных в орнамент.</p>
+                    <button class="btn-tool" onclick="showDemoMessage()">Запустить генератор</button>
                 </div>
+            </div>
+
+            <div class="warning-box">
+                <i class="fa-solid fa-triangle-exclamation"></i> 
+                <strong>Важное примечание:</strong> Представленные генераторы создают изображения в исходном цифровом виде без автоматической адаптации к конкретным печатным системам. В цифровой среде такие коды гарантированно считываются стандартными средствами только с экрана.
+                <br><br>
+                Для воспроизведения на физических носителях параметры изображения должны быть предварительно согласованы с характеристиками конкретного печатного устройства и материала согласно модели SCI.
             </div>
         </section>
 
-        <!-- BLOCK 4: EXPERIMENTS -->
-        <section id="experiments" class="content-block">
-            <div class="container">
-                <h2>Статус проекта</h2>
-                <p class="summary-text">
-                    SCI — это открытый исследовательский проект. Показаны экспериментальные примеры декодирования: многослойный код на холсте.
+        <!-- BLOCK 4 -->
+        <section>
+            <h2>Блок 4. Статус проекта</h2>
+            <h3>Текущее состояние исследований</h3>
+            <p>
+                Модель SCI представляет собой исследовательский проект, объединяющий теоретическую модель и серию практических экспериментов. В основе проекта лежат многолетние исследования поведения реальных пигментов и их взаимодействия с узкополосным RGB-освещением.
+            </p>
+            <p>
+                Одним из экспериментальных подтверждений работоспособности концепции является реальный физический эксперимент — многослойный цветовой код, реализованный акриловыми пигментами на холсте и успешно декодируемый цифровой камерой.
+            </p>
+            <p>
+                Текущая работа направлена на:
+            </p>
+            <ul>
+                <li>Расширение экспериментальной базы и исследование воспроизводимости результатов на различных носителях;</li>
+                <li>Разработку методов спектральной калибровки;</li>
+                <li>Адаптацию модели для задач компьютерного зрения;</li>
+                <li>Исследование возможностей многоканального оптического кодирования.</li>
+            </ul>
+            <p>
+                Проект находится в стадии открытых исследований и приветствует научное и инженерное сотрудничество.
+            </p>
+        </section>
+
+        <!-- AUTHOR SECTION 1 (Exact Duplicate as requested) -->
+        <section>
+            <h2>Раздел: Об авторе</h2>
+            <div class="author-card">
+                <h3>Михаил Кашкаров — Художник и независимый исследователь</h3>
+                <p>
+                    Выпускник Харьковского художественного училища (1998). Обучался в Харьковской государственной академии дизайна и искусств (1999–2005).
                 </p>
-
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr); gap: 2rem; margin-top: 3rem;">
-                    <div style="border: 1px solid var(--border-color); padding: 10px;">
-                        <div class="figure-container" style="margin-top: 0;">
-                            <img src="steganography_acrylic_canvas.jpg" alt="Canvas Experiment">
-                        </div>
-                        <div class="figure-caption">Многослойная живопись на холсте.</div>
-                    </div>
-                    <div style="border: 1px solid var(--border-color); padding: 10px;">
-                        <div class="figure-container" style="margin-top: 0;">
-                            <img src="handwork_01.png" alt="Detail">
-                        </div>
-                        <div class="figure-caption">Проверка спектрального разделения.</div>
-                    </div>
-                </div>
-
-                <details>
-                    <summary>🔘 ПОДРОБНО: Текущее состояние исследований</summary>
-                    <div class="details-content">
-                        <p>
-                            Проект SCI прошел стадию теоретического обоснования и первых лабораторных тестов. Текущая работа направлена на масштабируемые инструменты и адаптацию модели:
-                        </p>
-                        <ul style="list-style: disc; padding-left: 20px;">
-                            <li>Упаковка SDK для систем компьютерного зрения.</li>
-                            <li>Сбор базы данных материалов.</li>
-                            <li>Создание плагинов для дизайн-инженерии.</li>
-                            <li>Разработка коммерческих приложений.</li>
-                        </ul>
-                    </div>
-                </details>
+                <p>
+                    На протяжении многих лет занимается исследованиями взаимодействия физических пигментов с узкополосным RGB-излучением, а также разработкой авторской техники светочувствительной живописи. Практические эксперименты с многослойными изображениями и спектральным разделением каналов послужили основой для формирования модели Spectral Channel Integrity (SCI).
+                </p>
+                <p>
+                    Проект SCI возник на стыке искусства, оптики, теории цвета и компьютерного зрения и продолжает развиваться как открытая исследовательская инициатива.
+                </p>
             </div>
         </section>
 
-        <!-- BLOCK 5: DOCUMENTATION -->
-        <section id="docs" class="content-block" style="border-bottom: none;">
-            <div class="container">
-                <h2>Документация</h2>
+        <!-- AUTHOR SECTION 2 (Exact Duplicate + Link as requested) -->
+        <section>
+            <h2>Раздел: Об авторе</h2>
+            <div class="author-card">
+                <h3>Михаил Кашкаров — Художник и независимый исследователь</h3>
+                <p>
+                    Выпускник Харьковского художественного училища (1998). Обучался в Харьковской государственной академии дизайна и искусств (1999–2005).
+                </p>
+                <p>
+                    На протяжении многих лет занимается исследованиями взаимодействия физических пигментов с узкополосным RGB-излучением, а также разработкой авторской техники светочувствительной живописи. Практические эксперименты с многослойными изображениями и спектральным разделением каналов послужили основой для формирования модели Spectral Channel Integrity (SCI).
+                </p>
+                <p>
+                    Проект SCI возник на стыке искусства, оптики, теории цвета и компьютерного зрения и продолжает развиваться как открытая исследовательская инициатива.
+                </p>
                 
-                <div class="doc-grid">
-                    <a href="#" class="doc-item">SCI Universal Model</a>
-                    <a href="https://zenodo.org/records/19633526" target="_blank" class="doc-item">Preprints</a>
-                    <a href="https://medium.com/@Bakminsterfuler" target="_blank" class="doc-item">Medium</a>
-                    <a href="https://github.com/Astra31415926" target="_blank" class="doc-item">GitHub</a>
-                </div>
+                <a href="https://astra31415926.github.io/" target="_blank" class="btn-link">
+                    <i class="fa-solid fa-arrow-up-right-from-square" style="margin-right: 8px;"></i>
+                    🔘 Кнопка-ссылка: [ Перейти в Арт-галерею автора ]
+                </a>
+            </div>
+        </section>
 
-                <div style="margin-top: 3rem;">
-                    <a href="https://zenodo.org/records/19633526" target="_blank" class="btn-main">Читать полную работу</a>
+        <!-- CONTACTS -->
+        <section>
+            <h2>Раздел: Контакты</h2>
+            <p>
+                Проект находится в стадии открытых исследований и приветствует научное, инженерное и творческое сотрудничество.
+            </p>
+            <div class="contact-list">
+                <div class="contact-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>+380 63 505 8292</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>bakminsterfuler@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-brands fa-github"></i>
+                    <a href="https://github.com/Astra31415926" target="_blank" style="color: var(--text-secondary); text-decoration: none;">@Astra31415926</a>
                 </div>
             </div>
         </section>
+
     </main>
-
-    <!-- AUTHOR SECTION -->
-    <section class="author-section">
-        <div class="container">
-            <div class="author-container">
-                <div class="author-avatar">
-                    <img src="avatar.png" alt="Mikhail Kashkarov">
-                </div>
-                <div>
-                    <h3>Михайло Кашкаров — Автор модели SCI</h3>
-                    <p>
-                        Художник и независимый исследователь.
-                    </p>
-                    <p>
-                        Выпускник Харьковского художественного училища (1998) и Харьковской государственной академии дизайна и искусств (1999–2005).
-                    </p>
-                    <p>
-                        Многолетние исследования поведения физических пигментов с узкополосным RGB-излучением и спектральным разделением каналов стали основой для формирования модели Spectral Channel Integrity (SCI).
-                    </p>
-
-                    <div class="author-contacts">
-                        <strong>Контакты:</strong>
-                        <br>
-                        <div class="author-contacts">
-                            <p>📞 +380 63 505 8292</p>
-                            <p>✉️ bakminsterfuler@gmail.com</p>
-                        </div>
-                        
-                        <div style="margin-top: 1rem;">
-                            <a href="https://github.com/Astra31415926" target="_blank" style="margin-right: 15px;">GitHub</a>
-                            <a href="https://zenodo.org/records/19633526" target="_blank" style="margin-right: 15px;">Zenodo</a>
-                            <a href="https://medium.com/@Bakminsterfuler" target="_blank" style="margin-right: 15px;">Medium</a>
-                            <a href="https://www.youtube.com/@Michael-RGB-ART/videos" target="_blank" style="margin-right: 15px;">YouTube</a>
-                            <a href="https://www.facebook.com/profile.php?id=100070020556929" target="_blank" style="margin-right: 15px;">Facebook</a>
-                            <a href="https://www.instagram.com/mixailkashkarov/?hl=ru" target="_blank" style="margin-right: 15px;">Instagram</a>
-                            <a href="https://x.com/MihailKashkarov" target="_blank">X</a>
-                        </div>
-                    </div>
-
-                    <a href="https://astra31415926.github.io/" target="_blank" class="btn-link">Перейти в Арт-галерею <i class="fa-solid fa-external-link-alt"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 SCI Universal Model. Все права защищены.</p>
-            <p style="margin-top: 5px; font-size: 0.75rem;">Spectral Channel Integrity</p>
+            &copy; SCI MODEL. Все права защищены. <br>
+            <span style="font-size: 0.8em; opacity: 0.6;">Спектральная целостность каналов (Spectral Channel Integrity)</span>
         </div>
     </footer>
 
+    <!-- Toast UI Element -->
+    <div id="toast" class="toast">
+        Интерактивный режим: Генерация в разработке.
+    </div>
+
+    <script>
+        // Simple interaction script for the toast message
+        function showDemoMessage() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Smooth scroll for anchor links if added later
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
