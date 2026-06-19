@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SCI MODEL - Воспроизводимость структуры цветового сигнала</title>
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
-    <!-- MathJax для рендеринга формул LaTeX -->
     <script>
     window.MathJax = {
       tex: {
@@ -27,7 +25,6 @@
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-    <!-- FontAwesome для иконок -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -45,7 +42,7 @@
         }
 
         [data-theme="light"] {
-            --bg-body: #F7F4EB; /* Приятный кремовый фон для глаз */
+            --bg-body: #F7F4EB; 
             --bg-surface: #EDE8DB;    
             --bg-surface-hover: #E3DCB9;
             --text-main: #1C1917;
@@ -129,7 +126,6 @@
             text-decoration: none;
         }
 
-        /* Переключатель темы (Луна / Солнце) */
         .theme-toggle {
             background: none;
             border: none;
@@ -271,7 +267,12 @@
             text-align: center;
         }
 
-        /* Кнопки дополнительной информации (Спойлеры) */
+        .formula-explanation {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
         details {
             margin-top: var(--spacing-sm);
             margin-bottom: var(--spacing-md);
@@ -315,7 +316,6 @@
             border-top: 1px solid var(--border-color);
         }
 
-        /* Карточки генераторов */
         .generators-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -386,7 +386,6 @@
             text-decoration: none;
         }
 
-        /* Карточка автора */
         .author-card {
             background: var(--bg-surface);
             padding: var(--spacing-md);
@@ -418,7 +417,6 @@
             flex-shrink: 0;
         }
 
-        /* Блок контактов */
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -456,7 +454,6 @@
 </head>
 <body>
 
-    <!-- Интерактивная горизонтальная полоса навигации -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-links">
@@ -476,12 +473,10 @@
 
     <main class="container">
 
-        <!-- Главный заголовок сайта -->
         <header style="margin-top: var(--spacing-md); margin-bottom: var(--spacing-md);">
             <h1>ВОСПРОИЗВОДИМОСТЬ СТРУКТУРЫ ЦВЕТОВОГО СИГНАЛА В СУБТРАКТИВНОЙ СРЕДЕ</h1>
             <h3>Независимые информационные каналы в физической среде пигментов</h3>
             
-            <!-- Картинка в самом верху под подзаголовком -->
             <div class="img-block" style="margin-top: var(--spacing-sm);">
                 <img src="main_sci_rss_blueprint.png" alt="Спектральные конусы калибровки">
                 <div class="img-caption">Figure. Спектральные конусы для калибровки принтеров и экранов.</div>
@@ -495,10 +490,6 @@
             <strong>Цель проекта модели SCI (Spectral Channel Integrity)</strong> — разработка детерминированных алгоритмов нормализации пигментных сред для сквозной синхронизации излучающих (экраны), отражающих (печать) и регистрирующих (оптические датчики) систем.
         </p>
 
-
-        <!-- ======================================================================= -->
-        <!-- БЛОК 1. ВВЕДЕНИЕ -->
-        <!-- ======================================================================= -->
         <section id="block-1">
             <h2>Блок 1. Концептуальное введение</h2>
             <h3>Проблема межканальной интерференции (Crosstalk)</h3>
@@ -508,10 +499,9 @@
 
             <div class="img-block">
                 <img src="crosstalk_comparison.png" alt="Сравнение межканальной интерференции">
-                <div class="img-caption">Figure. Схематическое представление наложения спектров (Crosstalk) и его устранения по модели SCI.</div>
+                <div class="img-caption">Figure. (A) Теоретические независимые RGB-каналы. (B) Реальное перекрытие и искажение сигналов (Crosstalk) при стандартной печати. (C) Нормализация среды по модели SCI для восстановления операционной независимости.</div>
             </div>
 
-            <!-- Дополнительная информация под кнопкой -->
             <details>
                 <summary>ПОДРОБНО: Ограничения перцепционного подхода и цели SCI</summary>
                 <div class="details-content">
@@ -530,10 +520,6 @@
             </details>
         </section>
 
-
-        <!-- ======================================================================= -->
-        <!-- БЛОК 2. МАТЕМАТИЧЕСКАЯ МОДЕЛЬ -->
-        <!-- ======================================================================= -->
         <section id="block-2">
             <h2>Блок 2. Математическая модель</h2>
             <h3>Механизм спектрального лимитирования</h3>
@@ -543,10 +529,9 @@
 
             <div class="img-block" style="width: 85%; margin: var(--spacing-md) auto;">
                 <img src="sci_spectral_scaling_blueprint.png" alt="Механизм спектрального масштабирования">
-                <div class="img-caption">Figure. Спектральное масштабирование пигментов относительно общих референсных уровней.</div>
+                <div class="img-caption">Спектральное масштабирование в модели SCI. Кривые отражения до нормализации (слева) и после нормализации относительно общих верхнего и нижнего уровней отсчета (справа).</div>
             </div>
 
-            <!-- Формулы спрятаны под кнопку -->
             <details>
                 <summary>ПОДРОБНО: Математический аппарат масштабирования</summary>
                 <div class="details-content">
@@ -555,25 +540,42 @@
                         <div class="formula-large">
                             $$I_{scaled}^{c}(\lambda) = I_{raw}^{c}(\lambda) \cdot \frac{A_{max}(L)}{A_{max}(c)}$$
                         </div>
+                        <div class="formula-explanation">
+                            <strong>где:</strong><br>
+                            \(I_{raw}^{c}(\lambda)\) — исходная интенсивность отражения рассматриваемого пигмента на длине волны \(\lambda\);<br>
+                            \(A_{max}(L)\) — максимальная физическая амплитуда выбранного спектрального ограничителя;<br>
+                            \(A_{max}(c)\) — максимальная амплитуда рассматриваемого пигмента.
+                        </div>
                     </div>
                     <div class="formula-container" style="border-top: 1px solid var(--border-color); margin-top: 1rem; padding-top: 1rem;">
                         <h3>Формирование общих опорных уровней</h3>
                         <div class="formula-large">
                             $$S_{out} = \frac{S_{in} - L_{ref}}{U_{ref} - L_{ref}}$$
                         </div>
+                        <div class="formula-explanation">
+                            <strong>где:</strong><br>
+                            \(S_{in}\) — значение входного сигнала после амплитудного выравнивания;<br>
+                            \(U_{ref}\) — общий верхний референсный уровень системы;<br>
+                            \(L_{ref}\) — общий нижний референсный уровень системы.
+                        </div>
                     </div>
                 </div>
             </details>
 
+            <h3>Границы применимости модели</h3>
             <p>
-                Модель SCI приводит спектральные характеристики пигментов к единым границам. Это уменьшает общий цветовой охват, но превращает физическую среду в стабильную систему с операционно независимыми компонентами, необходимую для прецизионного многоканального кодирования.
+                Принудительное сжатие динамического диапазона неизбежно приводит к сокращению максимального цветового охвата (Gamut) печатной системы. Из-за этого модель SCI не предназначена для традиционной художественной репродукции. Её приоритетная область применения — задачи, где сохранность структуры сигнала критичнее предельной визуальной насыщенности:
             </p>
+            <ul>
+                <li>Многоканальное спектральное кодирование данных;</li>
+                <li>Спектральная стеганография и скрытая маркировка;</li>
+                <li>Оптимизация изображений для систем машинного зрения и ИИ;</li>
+                <li>Прецизионная калибровка оптического измерительного оборудования;</li>
+                <li>Защита ценных бумаг и аутентификация физических объектов;</li>
+                <li>Специальные художественные системы с изолированными информационными слоями.</li>
+            </ul>
         </section>
 
-
-        <!-- ======================================================================= -->
-        <!-- БЛОК 3. ПРАКТИЧЕСКОЕ ПРИМЕНЕНИЕ И ИСПЫТАНИЯ -->
-        <!-- ======================================================================= -->
         <section id="block-3">
             <h2>Блок 3. Практическое применение в компьютерном зрении</h2>
             <p>
@@ -583,7 +585,7 @@
             <div class="generators-grid">
                 <div class="gen-card">
                     <div class="gen-img-wrapper">
-                        <img src="spectrum_qr_preview.png" alt="Многослойный QR-код">
+                        <img src="Mykhailo Kashkarov.png" alt="Многослойный QR-код">
                     </div>
                     <div class="gen-info">
                         <div>
@@ -606,11 +608,16 @@
                             <p style="font-size: 0.9rem;">Алгоритм бесшовного внедрения матричных структур данных в орнаментальные композиции и паттерны.</p>
                         </div>
                         <a href="https://astra31415926.github.io/QRnament2/" target="_blank" class="btn-link">
-                            <i class="fa-solid =/==/=-curve"></i> Открыть QRnament
+                            <i class="fa-solid fa-bezier-curve"></i> Открыть QRnament
                         </a>
                     </div>
                 </div>
             </div>
+
+            <p style="font-size: 0.95rem; font-style: italic; background: rgba(56, 189, 248, 0.05); padding: 1rem; border-left: 3px solid var(--accent-primary); border-radius: 4px; margin-bottom: var(--spacing-md);">
+                <strong>Обратите внимание:</strong> представленные веб-генераторы формируют изображения в идеальном цифровом виде, без автоматической адаптации к искажениям конкретных печатных машин. В исходном цифровом виде эти структуры гарантированно декодируются программным обеспечением только при считывании непосредственно с экрана вашего монитора.<br><br>
+                Для корректного переноса на физический носитель (бумагу, пластик или холст) параметры генерируемого файла должны пройти предварительную калибровку и согласование со спектральным профилем оборудования согласно алгоритмам SCI.
+            </p>
 
             <h3>Подраздел: Практическое испытание</h3>
             <p>
@@ -623,16 +630,12 @@
                     <div class="img-caption">steganography_acrylic_canvas.jpg</div>
                 </div>
                 <div class="img-block" style="margin:0;">
-                    <img src="handwork_01.png" alt="Орнаментальный акриловый код">
-                    <div class="img-caption">handwork_01.png</div>
+                    <img src="handwork_01.jpg" alt="Орнаментальный акриловый код">
+                    <div class="img-caption">handwork_01.jpg</div>
                 </div>
             </div>
         </section>
 
-
-        <!-- ======================================================================= -->
-        <!-- БЛОК 4. АППАРАТНАЯ КАЛИБРОВКА -->
-        <!-- ======================================================================= -->
         <section id="block-4">
             <h2>Блок 4. Аппаратная калибровка</h2>
             <p>
@@ -645,10 +648,6 @@
             </p>
         </section>
 
-
-        <!-- ======================================================================= -->
-        <!-- БЛОК 5. СТАТУС ПРОЕКТА -->
-        <!-- ======================================================================= -->
         <section id="block-5">
             <h2>Блок 5. Статус проєкту</h2>
             <p>
@@ -661,15 +660,11 @@
             </p>
         </section>
 
-
-        <!-- ======================================================================= -->
-        <!-- БЛОК 6. ОБ АВТОРЕ -->
-        <!-- ======================================================================= -->
         <section id="block-6">
             <h2>Блок 6. Об авторе</h2>
             <div class="author-card">
                 <div class="author-profile">
-                    <img src="avatar.png" alt="Михаил Кашкаров" class="author-img">
+                    <img src="avatar.jpg" alt="Михаил Кашкаров" class="author-img">
                     <div>
                         <h3 style="margin-top:0;">Михаил Кашкаров</h3>
                         <p style="font-size: 0.95rem; font-style: italic;">Художник и независимый исследователь</p>
@@ -684,24 +679,44 @@
             </div>
         </section>
 
-
-        <!-- ======================================================================= -->
-        <!-- БЛОК 7. КОНТАКТЫ -->
-        <!-- ======================================================================= -->
         <section id="block-7">
             <h2>Блок 7. Контакты</h2>
             <div class="contact-grid">
                 <div class="contact-item">
-                    <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
-                    <div><strong>Телефон:</strong><br>+380 63 505 8292</div>
+                    <div class="contact-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <div><strong>Zenodo (Препринты):</strong><br><a href="#" target="_blank">Репозиторий публикации</a></div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fa-brands fa-medium"></i></div>
+                    <div><strong>Medium:</strong><br><a href="https://medium.com/@Bakminsterfuler" target="_blank">@Bakminsterfuler</a></div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fa-brands fa-github"></i></div>
+                    <div><strong>GitHub:</strong><br><a href="https://github.com/Astra31415926" target="_blank">@Astra31415926</a></div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fa-brands fa-youtube"></i></div>
+                    <div><strong>YouTube:</strong><br><a href="#" target="_blank">Michael-RGB-ART</a></div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fa-brands fa-facebook"></i></div>
+                    <div><strong>Facebook:</strong><br><a href="#" target="_blank">Профиль FB</a></div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fa-brands fa-x-twitter"></i></div>
+                    <div><strong>X (Twitter):</strong><br><a href="https://x.com/MihailKashkarov" target="_blank">@MihailKashkarov</a></div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fa-brands fa-linkedin"></i></div>
+                    <div><strong>LinkedIn:</strong><br><a href="#" target="_blank">Михайло Кашкаров</a></div>
                 </div>
                 <div class="contact-item">
                     <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
                     <div><strong>Email:</strong><br><a href="mailto:bakminsterfuler@gmail.com">bakminsterfuler@gmail.com</a></div>
                 </div>
                 <div class="contact-item">
-                    <div class="contact-icon"><i class="fa-brands fa-github"></i></div>
-                    <div><strong>GitHub:</strong><br><a href="https://github.com/Astra31415926" target="_blank">@Astra31415926</a></div>
+                    <div class="contact-icon"><i class="fa-solid fa-paper-plane"></i></div>
+                    <div><strong>Telegram:</strong><br><a href="https://t.me/MichaelKashkarov" target="_blank">@MichaelKashkarov</a></div>
                 </div>
             </div>
         </section>
@@ -712,7 +727,6 @@
 
     </main>
 
-    <!-- Скрипт переключения темы (Темная / Кремовая светлая) -->
     <script>
         const themeBtn = document.getElementById('themeBtn');
         const htmlEl = document.documentElement;
