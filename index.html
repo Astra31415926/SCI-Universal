@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SCI MODEL - Воспроизводимость структуры цветового сигнала</title>
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
-    <!-- MathJax for LaTeX Rendering -->
     <script>
     window.MathJax = {
       tex: {
@@ -27,7 +25,6 @@
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -147,7 +144,7 @@
             max-width: 800px;
             margin: var(--spacing-md) auto;
             border-radius: 8px;
-            border: 1px dashed var(--border-color);
+            border: 1px solid var(--border-color);
             overflow: hidden;
             background: var(--bg-surface);
         }
@@ -382,7 +379,6 @@
 
     <main class="container">
 
-        <!-- HEADER / INTRO -->
         <header style="margin-bottom: var(--spacing-md);">
             <h1>ВОСПРОИЗВОДИМОСТЬ СТРУКТУРЫ ЦВЕТОВОГО СИГНАЛА В СУБТРАКТИВНОЙ СРЕДЕ</h1>
             <h3>Независимые информационные каналы в физической среде пигментов</h3>
@@ -407,16 +403,12 @@
             <li>Возможно ли сформировать единый физический базис для дисплеев, печатных систем и оптических сенсоров?</li>
         </ul>
 
-        <!-- IMAGE 1 -->
         <div class="img-block">
-            <!-- Placeholder used for demonstration. Replace src with "main_sci_rss_blueprint.png" -->
-            <img src="https://placehold.co/800x400/1e293b/38BDF8?text=main_sci_rss_blueprint.png" alt="main_sci_rss_blueprint.png">
-            <div class="img-caption">[ ИЛЛЮСТРАЦИЯ: Вставить файл main_sci_rss_blueprint.png ]</div>
+            <img src="main_sci_rss_blueprint.png" alt="Воспроизводимость структуры цветового сигнала">
         </div>
 
         <hr style="border: 0; border-top: 1px solid var(--border-color); margin: var(--spacing-md) 0;">
 
-        <!-- BLOCK 1 -->
         <section>
             <h2>Блок 1. Концептуальное введение</h2>
             <h3>От перцепционной колориметрии к спектральной воспроизводимости</h3>
@@ -428,7 +420,7 @@
             </p>
 
             <details>
-                <summary>🔘 Кнопка: [ ПОДРОБНО: Ограничения перцепционного подхода и цели SCI ]</summary>
+                <summary>ПОДРОБНО: Ограничения перцепционного подхода и цели SCI</summary>
                 <div class="details-content">
                     <h3>Сравнительный анализ ограничений ICC и архитектуры SCI</h3>
                     <p>
@@ -443,17 +435,14 @@
                         <strong>Архитектурный сдвиг SCI:</strong> Модель заменяет визуальную подгонку жестким спектральным разделением. Пространство пигментов принудительно приводится к линейным границам, что делает субтрактивную среду функционально эквивалентной аддитивной матрице дисплея.
                     </p>
 
-                    <!-- IMAGE 2 (INSIDE SPOILER) -->
                     <div class="img-block" style="margin-top: 1.5rem;">
-                        <img src="https://placehold.co/800x400/1e293b/E879F9?text=crosstalk_comparison.png" alt="crosstalk_comparison.png">
-                        <div class="img-caption">[ ИЛЛЮСТРАЦИЯ ВНУТРИ БЛОКА: Вставить файл crosstalk_comparison.png ]</div>
-                        <div class="img-caption">(Подпись под графиком: (A) Независимые RGB каналы. (B) Стандартная печать (crosstalk). (C) Нормализация SCI (восстановление независимости))</div>
+                        <img src="crosstalk_comparison.png" alt="Сравнение межканальной интерференции">
+                        <div class="img-caption">(A) Независимые RGB каналы. (B) Стандартная печать (crosstalk). (C) Нормализация SCI (восстановление независимости)</div>
                     </div>
                 </div>
             </details>
         </section>
 
-        <!-- BLOCK 2 -->
         <section>
             <h2>Блок 2. Математическая модель</h2>
             <h3>Механизм спектрального масштабирования</h3>
@@ -461,14 +450,12 @@
                 SCI использует спектральный ограничитель — компонент с минимальным динамическим диапазоном. Все остальные пигменты нормализуются относительно его физических границ, образуя общую систему опорных уровней. Такое масштабирование преобразует физически неоднородную среду в систему с предсказуемым спектральным поведением.
             </p>
 
-            <!-- IMAGE 3 -->
             <div class="img-block">
-                <img src="https://placehold.co/800x400/1e293b/38BDF8?text=sci_spectral_scaling_blueprint.png" alt="sci_spectral_scaling_blueprint.png">
-                <div class="img-caption">[ ИЛЛЮСТРАЦИЯ: Вставить файл sci_spectral_scaling_blueprint.png ]</div>
+                <img src="sci_spectral_scaling_blueprint.png" alt="Механизм спектрального масштабирования">
             </div>
 
             <details>
-                <summary>🔘 Кнопка: [ ПОДРОБНО: Механизм спектрального лимитирования ]</summary>
+                <summary>ПОДРОБНО: Механизм спектрального лимитирования</summary>
                 <div class="details-content">
                     <h3>Якорь системы — Пурпур (Magenta)</h3>
                     <p>
@@ -486,7 +473,6 @@
             </details>
         </section>
 
-        <!-- BLOCK 2.5 -->
         <section>
             <h2>Блок 2.5. Аппаратная калибровка</h2>
             <h3>Аппаратная синхронизация излучающей и отражающей сред</h3>
@@ -501,7 +487,7 @@
             </p>
 
             <details>
-                <summary>🔘 Кнопка: [ ПОДРОБНО: Как фильтры замыкают аппаратный цикл ]</summary>
+                <summary>ПОДРОБНО: Как фильтры замыкают аппаратный цикл</summary>
                 <div class="details-content">
                     <h3>Физика замкнутого цикла</h3>
                     <p>
@@ -516,7 +502,6 @@
             </details>
         </section>
 
-        <!-- BLOCK 3 -->
         <section>
             <h2>Блок 3. Практические применения и экспериментальные системы</h2>
             <h3>Воспроизводимое представление цветовой информации на физическом носителе</h3>
@@ -525,28 +510,24 @@
             </p>
             
             <ul>
-                <!-- Spectrum QR with Image -->
                 <li>
                     <div class="img-inline-grid">
                         <div>
                             <strong>Spectrum QR:</strong> Многослойное цветовое кодирование данных с использованием независимых информационных каналов.
                         </div>
                         <div class="img-block" style="margin:0; width:100%;">
-                             <img src="https://placehold.co/400x300/1e293b/38BDF8?text=steganography_acrylic_canvas.jpg" alt="steganography_acrylic_canvas.jpg">
-                             <div class="img-caption">[ ИЛЛЮСТРАЦИЯ: steganography_acrylic_canvas.jpg ]</div>
+                             <img src="steganography_acrylic_canvas.jpg" alt="Spectrum QR на холсте">
                         </div>
                     </div>
                 </li>
 
-                <!-- QRnament with Image -->
                 <li>
                     <div class="img-inline-grid">
                         <div>
                             <strong>QRnament:</strong> Интеграция структурированных данных в орнаментальные композиции и художественные изображения с сохранением визуальной целостности.
                         </div>
                         <div class="img-block" style="margin:0; width:100%;">
-                             <img src="https://placehold.co/400x300/1e293b/E879F9?text=qrnament-mandala.png" alt="qrnament-mandala.png">
-                             <div class="img-caption">[ ИЛЛЮСТРАЦИЯ: qrnament-mandala.png ]</div>
+                             <img src="qrnament-mandala.png" alt="QRnament Мандала">
                         </div>
                     </div>
                 </li>
@@ -556,11 +537,10 @@
             </ul>
         </section>
 
-        <!-- TOOLS SECTION -->
         <section class="tools-wrapper">
             <h3>Раздел: Инструменты и генераторы</h3>
             <div class="tool-placeholder">
-                (Интерактивный блок с генераторами: Spectrum QR Generator / QRnament Creator)
+                (Интерактивный block с генераторами: Spectrum QR Generator / QRnament Creator)
             </div>
             
             <div class="warning-box">
@@ -571,7 +551,6 @@
             </div>
         </section>
 
-        <!-- BLOCK 4 -->
         <section>
             <h2>Блок 4. Статус проекта</h2>
             <h3>Текущее состояние исследований</h3>
@@ -582,10 +561,8 @@
                 Одним из экспериментальных подтверждений работоспособности концепции является многослойный цветовой код, реализованный акриловыми пигментами на холсте и успешно декодируемый цифровой камерой.
             </p>
 
-            <!-- IMAGE 6 -->
             <div class="img-block">
-                <img src="https://placehold.co/800x500/1e293b/F59E0B?text=handwork_01.jpg" alt="handwork_01.jpg">
-                <div class="img-caption">[ ИЛЛЮСТРАЦИЯ: Вставить файл handwork_01.jpg под описанием эксперимента на холсте ]</div>
+                <img src="handwork_01.jpg" alt="Эксперимент с акриловыми пигментами на холсте">
             </div>
 
             <br>
@@ -599,14 +576,12 @@
             </ul>
         </section>
 
-        <!-- AUTHOR SECTION -->
         <section class="author-section">
             <h2>Раздел: Об авторе</h2>
             
             <div class="author-card">
                 <div class="author-profile">
-                    <!-- IMAGE 7 -->
-                    <img src="https://placehold.co/300x300/1e293b/E879F9?text=Mykhailo+Kashkarov.png" alt="Mykhailo Kashkarov" class="author-img">
+                    <img src="Mykhailo Kashkarov.png" alt="Михаил Кашкаров" class="author-img">
                     
                     <div>
                         <h3 style="margin-top:0; color: var(--accent-primary);">Михаил Кашкаров — Художник и независимый исследователь</h3>
@@ -621,14 +596,13 @@
                         </p>
                         
                         <a href="https://astra31415926.github.io/" target="_blank" class="btn-link">
-                            🔘 Кнопка-ссылка: [ Перейти в Арт-галерею автора ]
+                            Перейти в Арт-галерею автора
                         </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- CONTACTS -->
         <section>
             <h2>Раздел: Контакты</h2>
             <p>
@@ -660,7 +634,7 @@
         </section>
 
         <footer>
-            <p>&copy; 2023 SCI MODEL. Все права защищены.</p>
+            <p>&copy; 2026 SCI MODEL. Все права защищены.</p>
         </footer>
 
     </main>
