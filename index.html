@@ -675,24 +675,49 @@ SCI позволяет системе компьютерного зрения ч
     <p class="cooperation">Проект открыт, и приглашает к сотрудничеству специалистов в области полиграфии, колориметрии и Computer Vision, а также программистов, спонсоров и всех, кому интересен этот проект.</p>
 </section>
 
-        <section id="block-6">
-            <h2> 6. Об авторе</h2>
-            <div class="author-card">
-                <div class="author-profile">
-                    <img src="avatar.png" alt="Михаил Кашкаров" class="author-img">
-                    <div>
-                        <h3 style="margin-top:0;">Михаил Кашкаров</h3>
-                        <p style="font-size: 0.95rem; font-style: italic;">Science art художник</p>
-                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">
-                            Изобретатель и автор светочувствительной RGB-живописи, теоретическое обоснование которой легло в основу модели SCI
-                        </p>
-                        <a href="https://astra31415926.github.io/" target="_blank" class="btn-link">
-                            <i class="fa-solid fa-palette"></i> Галерея автора
-                        </a>
-                    </div>
+       <section id="block-6">
+    <h2> 6. Об авторе</h2>
+    <div class="author-card">
+        <div class="author-profile">
+            <img src="avatar.png" alt="Михаил Кашкаров" class="author-img">
+            <div>
+                <h3 style="margin-top:0;">Михаил Кашкаров</h3>
+                <p style="font-size: 0.95rem; font-style: italic;">Science art художник</p>
+                
+                <!-- Динамический текст -->
+                <p id="author-text" style="font-size: 0.9rem; margin-top: 0.5rem; min-height: 40px;">
+                    Изобретатель и автор светочувствительной RGB-живописи, теоретическое обоснование которой легло в основу модели SCI
+                </p>
+                
+                <!-- Кнопки управления -->
+                <div style="display: flex; gap: 15px; align-items: center; margin-top: 1rem; flex-wrap: wrap;">
+                    <a href="https://astra31415926.github.io/" target="_blank" class="btn-link" style="margin: 0;">
+                        <i class="fa-solid fa-palette"></i> Галерея автора
+                    </a>
+                    <button onclick="toggleBiography()" id="btn-toggle" class="btn-link" style="background: none; border: 1px solid currentColor; cursor: pointer; padding: 5px 15px; border-radius: 4px;">подробно</button>
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
+
+<script>
+function toggleBiography() {
+    const textBlock = document.getElementById('author-text');
+    const button = document.getElementById('btn-toggle');
+    
+    const shortText = "Изобретатель и автор светочувствительной RGB-живописи, теоретическое обоснование которой легло в основу модели SCI";
+    const fullText = "Михаил получил образование в области графики, скульптуры, дизайна и живописи. Он является участником международных фестивалей, выставок и арт-резиденций, лауреатом художественных премий, а также автором запатентованной кинетической конструкции «Каскад».";
+
+    if (textBlock.innerText.trim() === shortText) {
+        textBlock.innerText = fullText;
+        button.innerText = "скрыть";
+    } else {
+        textBlock.innerText = shortText;
+        button.innerText = "подробно";
+    }
+}
+</script>
 
       <section id="block-7">
             <h2> 7. Контакты и публикации</h2>
