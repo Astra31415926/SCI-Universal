@@ -675,28 +675,35 @@ SCI позволяет системе компьютерного зрения ч
     <p class="cooperation">Проект открыт, и приглашает к сотрудничеству специалистов в области полиграфии, колориметрии и Computer Vision, а также программистов, спонсоров и всех, кому интересен этот проект.</p>
 </section>
 
-       <section id="block-6">
+      <section id="block-6">
     <h2> 6. Об авторе</h2>
     <div class="author-card">
-        <div class="author-profile">
-            <img src="avatar.png" alt="Михаил Кашкаров" class="author-img">
-            <div>
-                <h3 style="margin-top:0;">Михаил Кашкаров</h3>
-                <p style="font-size: 0.95rem; font-style: italic;">Science art художник</p>
-                
-                <!-- Динамический текст -->
-                <p id="author-text" style="font-size: 0.9rem; margin-top: 0.5rem; min-height: 40px;">
-                    Изобретатель и автор светочувствительной RGB-живописи, теоретическое обоснование которой легло в основу модели SCI
-                </p>
-                
-                <!-- Кнопки управления -->
-                <div style="display: flex; gap: 15px; align-items: center; margin-top: 1rem; flex-wrap: wrap;">
-                    <a href="https://astra31415926.github.io/" target="_blank" class="btn-link" style="margin: 0;">
-                        <i class="fa-solid fa-palette"></i> Галерея автора
-                    </a>
-                    <button onclick="toggleBiography()" id="btn-toggle" class="btn-link" style="background: none; border: 1px solid currentColor; cursor: pointer; padding: 5px 15px; border-radius: 4px;">подробно</button>
+        <div class="author-profile" style="display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: start;">
+            
+            <!-- Левая колонка: Аватар -->
+            <img src="avatar.png" alt="Михаил Кашкаров" class="author-img" style="grid-row: span 3;">
+            
+            <!-- Правая колонка: Имя, подзаголовок и кнопка галереи в один ряд -->
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 15px;">
+                <div>
+                    <h3 style="margin: 0; font-size: 1.5rem;">Михаил Кашкаров</h3>
+                    <p style="font-size: 0.95rem; font-style: italic; margin: 5px 0 0 0; color: #888;">Science art художник</p>
                 </div>
+                <a href="https://astra31415926.github.io/" target="_blank" class="btn-link" style="margin: 0; white-space: nowrap;">
+                    <i class="fa-solid fa-palette"></i> Галерея автора
+                </a>
             </div>
+            
+            <!-- Текст описания -->
+            <p id="author-text" style="font-size: 0.9rem; margin: 15px 0 0 0; line-height: 1.5; max-width: 90%;">
+                Изобретатель и автор светочувствительной RGB-живописи, теоретическое обоснование которой легло в основу модели SCI
+            </p>
+            
+            <!-- Кнопка Подробно -->
+            <div style="margin-top: 15px;">
+                <button onclick="toggleBiography()" id="btn-toggle" class="btn-link" style="background: none; border: 1px solid currentColor; cursor: pointer; padding: 5px 25px; border-radius: 4px;">подробно</button>
+            </div>
+            
         </div>
     </div>
 </section>
@@ -718,7 +725,6 @@ function toggleBiography() {
     }
 }
 </script>
-
       <section id="block-7">
             <h2> 7. Контакты и публикации</h2>
             <div class="contact-grid">
