@@ -675,24 +675,39 @@ SCI позволяет системе компьютерного зрения ч
     <p class="cooperation">Проект открыт, и приглашает к сотрудничеству специалистов в области полиграфии, колориметрии и Computer Vision, а также программистов, спонсоров и всех, кому интересен этот проект.</p>
 </section>
 
-        <section id="block-6">
-            <h2> 6. Об авторе</h2>
-            <div class="author-card">
-                <div class="author-profile">
-                    <img src="avatar.png" alt="Михаил Кашкаров" class="author-img">
-                    <div>
-                        <h3 style="margin-top:0;">Михаил Кашкаров</h3>
-                        <p style="font-size: 0.95rem; font-style: italic;">Science art художник</p>
-                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">
-                            Изобретатель и автор светочувствительной RGB-живописи, теоретическое обоснование которой легло в основу модели SCI
-                        </p>
-                        <a href="https://astra31415926.github.io/" target="_blank" class="btn-link">
-                            <i class="fa-solid fa-palette"></i> Галерея автора
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
+       <section class="about-author">
+    <!-- Основная визитка (видна сразу) -->
+    <div class="author-profile">
+        <h2>Михаил Кашкаров</h2>
+        <p class="subtitle">Science art художник</p>
+        <p class="intro">Изобретатель и автор светочувствительной RGB-живописи, теоретическое обоснование которой легло в основу модели SCI.</p>
+        
+        <div class="author-links">
+            <a href="#gallery" class="btn-gallery">Галерея</a>
+            <button onclick="toggleBiography()" class="btn-more">Подробнее</button>
+        </div>
+    </div>
+
+    <!-- Полная биография (открывается по кнопке) -->
+    <div id="full-biography" class="biography-details" style="display: none;">
+        <p>Художественная практика Михаила строится на пересечении искусства, технологий и визуального эксперимента. В своих работах он объединяет живопись, графику, скульптуру, инсталляции и кинетические объекты.</p>
+        
+        <p>Михаил — участник международных фестивалей, выставок и арт-резиденций, лауреат художественных премий, а также автор запатентованной кинетической конструкции «Каскад».</p>
+        
+        <p>Созданная им светочувствительная RGB-живопись и модель SCI сегодня служат базой для дальнейших исследований на стыке колориметрии и Computer Vision. Этот проект переносит физические свойства цвета в цифровую среду, открывая новые возможности для практического применения в цифро-физических системах.</p>
+    </div>
+</section>
+
+<script>
+function toggleBiography() {
+    const bio = document.getElementById('full-biography');
+    if (bio.style.display === 'none') {
+        bio.style.display = 'block';
+    } else {
+        bio.style.display = 'none';
+    }
+}
+</script>
 
       <section id="block-7">
             <h2> 7. Контакты и публикации</h2>
