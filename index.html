@@ -485,11 +485,11 @@
         
         html[lang="ru"] .lang-ru { display: block; }
         html[lang="ru"] span.lang-ru, html[lang="ru"] a.lang-ru, html[lang="ru"] strong.lang-ru { display: inline; }
-        html[lang="ru"] div.lang-ru { display: flex; }
+        html[lang="ru"] div.lang-ru { display: block; }
         
         html[lang="fi"] .lang-fi { display: block; }
         html[lang="fi"] span.lang-fi, html[lang="fi"] a.lang-fi, html[lang="fi"] strong.lang-fi { display: inline; }
-        html[lang="fi"] div.lang-fi { display: flex; }
+        html[lang="fi"] div.lang-fi { display: block; }
     </style>
 </head>
 <body>
@@ -535,16 +535,37 @@
             <h1 class="lang-ru" style="text-align: center;">SPECTRAL CHANNEL INTEGRITY (SCI)</h1>
             <h1 class="lang-fi" style="text-align: center;">SPECTRAL CHANNEL INTEGRITY (SCI)</h1>
             
-            <h3 class="lang-ru" style="font-weight: 400; color: var(--text-muted); text-align: center;">Детерминированная нормализация спектрального отклика для систем компьютерного зрения.</h3>
-            <h3 class="lang-fi" style="font-weight: 400; color: var(--text-muted); text-align: center;">Deterministinen spektrivasteen normalisointi tietokonevision järjestelmille.</h3>
+            <!-- ОБНОВЛЕННЫЙ ВВОДНЫЙ ТЕКСТ -->
+            <div class="lang-ru" style="text-align: left;">
+                <h3>1. Концептуальное введение</h3>
+                <p>Ресурс посвящён воспроизводимости структуры цветового сигнала при передаче информации между излучающими (дисплеи), отражающими (пигменты) и регистрирующими (камеры и датчики) системами. В основе подхода лежит сохранение линейной структуры спектральных каналов, обеспечивающее цветовую целостность изображения при переходе между различными физическими средами.</p>
+                <p>Модель Spectral Channel Integrity (SCI) рассматривает цвет не только как объект визуального восприятия, но и как структуру данных, требующую воспроизводимого представления независимо от используемого оборудования. Предложенный математический аппарат позволяет описывать, калибровать и контролировать процессы передачи цветовой информации на основе единых спектральных принципов.</p>
+                <p>Такой подход открывает возможность построения согласованных систем отображения, печати и регистрации изображений, в которых сохраняются взаимные пропорции RGB-компонент и обеспечивается воспроизводимость цветового сигнала на различных мониторах, матрицах камер, мобильных устройствах и физических носителях.</p>
+                <p>Цель проекта — исследование методов детерминированной цветопередачи и создание единой спектральной основы для задач компьютерного зрения, калибровки оборудования и многоканального оптического кодирования.</p>
+            </div>
+            <div class="lang-fi" style="text-align: left;">
+                <h3>1. Konseptuaalinen johdanto</h3>
+                <p>Resurssi on omistettu värin signaalirakenteen toistettavuudelle siirrettäessä tietoa emittoivien (näytöt), heijastavien (pigmentit) ja rekisteröivien (kamerat ja anturit) järjestelmien välillä. Lähestymistavan perustana on spektrikanavien lineaarisen rakenteen säilyttäminen, mikä takaa kuvan värieheyden siirryttäessä eri fyysisiin väliympäristöihin.</p>
+                <p>Spectral Channel Integrity (SCI) -malli käsittelee väriä paitsi visuaalisen havainnon kohteena myös datarakenteena, joka vaatii toistettavaa esitystä riippumatta käytetystä laitteistosta. Esitetty matemaattinen apuväline mahdollistaa värin tiedonsiirtoprosessien kuvaamisen, kalibroinnin ja hallinnan yhteisten spektriperiaatteiden pohjalta.</p>
+                <p>Tämä lähestymistapa avaa mahdollisuuden rakentaa yhteensopivia kuvien näyttö-, tulostus- ja rekisteröintijärjestelmiä, joissa RGB-komponenttien keskinäiset suhteet säilyvät ja värin signaalin toistettavuus varmistetaan eri näytöillä, kameroiden matriiseilla, mobiililaitteilla ja fyysisillä väliympäristöillä.</p>
+                <p>Projektin tavoite on tutkia deterministisen värin toistamisen menetelmiä ja luoda yhtenäinen spektriperusta tietokonevision, laitteistokalibroinnin ja monikanavaisen optisen koodauksen tehtäviin.</p>
+            </div>
             
-            <!-- ПЕРВАЯ ИЛЛЮСТРАЦИЯ (РОКИРОВКА) -->
+            <!-- ПЕРВАЯ ИЛЛЮСТРАЦИЯ -->
             <div class="img-block" style="margin-top: var(--spacing-sm);">
                 <img src="crosstalk_comparison.png" alt="Crosstalk comparison">
                 <div class="img-caption">
                     <span class="lang-ru">Figure. Межканальная интерференция (Crosstalk) при стандартном профилировании</span>
                     <span class="lang-fi">Figure. Kanavien välinen häiriö (Crosstalk) standardiprofiloinnissa</span>
                 </div>
+            </div>
+            
+            <!-- ДОБАВЛЕННЫЙ ТЕКСТ ПОД ПЕРВОЙ ИЛЛЮСТРАЦИЕЙ -->
+            <div class="lang-ru">
+                <p>На рисунку 1 показано цей ефект. У системі "A" (RGB) канали є незалежними та можуть бути повністю розділені. Після відтворення того самого зображення на субтрактивному носії стандартними методами "B" (CMYK) виникає міжканальне перекриття, через яке під час спектральної сепарації кожен канал містить інтерференційні компоненти інших каналів. Після застосування normalization "C" (SCI) амплітудний дисбаланс і базові рівні вирівнюються, що суттєво зменшує crosstalk і відновлює операційну незалежність каналів.</p>
+            </div>
+            <div class="lang-fi">
+                <p>Kuvassa 1 näytetään tämä vaikutus. Järjestelmässä "A" (RGB) kanavat ovat riippumattomia ja voidaan erottaa täysin. Kun sama kuva toistetaan subtraktiiviselle väliympäristölle standardimenetelmillä "B" (CMYK), syntyy kanavien välinen päällekkäisyys, jonka vuoksi spektrierottelun aikana jokainen kanava sisältää muiden kanavien interpolointikomponentteja. Normalisoinnin "C" (SCI) soveltamisen jälkeen amplituditasapaino ja perustasot tasataan, mikä vähentää merkittävästi crosstalk-häiriötä ja palauttaa kanavien toiminnallisen riippumattomuuden.</p>
             </div>
         </header>
 
@@ -613,26 +634,21 @@
             <h2 class="lang-ru">2. Математическая модель</h2>
             <h2 class="lang-fi">2. Matemaattinen malli</h2>
             
-            <!-- ВТОРАЯ ИЛЛЮСТРАЦИЯ (РОКИРОВКА) -->
+            <!-- ВТОРАЯ ИЛЛЮСТРАЦИЯ -->
             <div class="img-block">
                 <img src="main_sci_rss_blueprint.png" alt="Spectral Channel Integrity (SCI)">
                 <div class="img-caption">Figure. Spectral Channel Integrity (SCI)</div>
             </div>
 
-            <!-- ДОБАВЛЕННЫЙ ТЕКСТ -->
-            <p class="lang-ru">
-                SCI-маркеры, синтезированные по правилам модели, представляют собой цветовые структуры, компоненты которых согласованы таким образом, чтобы минимизировать межканальную интерференцию (Crosstalk) и обеспечить воспроизводимое разделение RGB-каналов. Их чёткая сепарация служит индикатором сохранности структуры цветового сигнала.
-            </p>
-            <p class="lang-fi">
-                SCI-mallin sääntöjen mukaan synteetiset SCI-merkit ovat väriarakenteita, joiden komponentit on sovitettu minimoimaan kanavien välinen häiriö (Crosstalk) ja varmistamaan RGB-kanavien toistettava erottelu. Niiden selkeä erottelu toimii värin signaalirakenteen säilymisen indikaattorina.
-            </p>
-
-            <p class="lang-ru">
-                Цветовые компоненты могут различаться в зависимости от используемого печатного оборудования и красителей, но при этом строго сохраняют согласованность и свойства модели. Для наглядности на первой схеме сайта (Figure. Spectral Channel Integrity) маркеры представлены в виде конусов, разделение которых через фильтры легко контролировать визуально.
-            </p>
-            <p class="lang-fi">
-                Värikomponentit voivat vaihdella käytetyn tulostuslaitteiston ja väriaineiden mukaan, mutta ne säilyttävät tiukasti mallin mukaisen yhteensopivuuden ja ominaisuudet. Havainnollistamiseksi sivuston ensimmäisessä kaaviossa (Figure. Spectral Channel Integrity) merkit on esitetty kartioina, joiden erottelua suodattimien läpi on helppo kontrolloida visuaalisesti.
-            </p>
+            <!-- ОБНОВЛЕННЫЙ ТЕКСТ ПОД ВТОРОЙ ИЛЛЮСТРАЦИЕЙ -->
+            <div class="lang-ru">
+                <p><strong>SCI-маркеры</strong>, синтезированные по правилам модели, представляют собой оптические элементы, цветовые компоненты которых согласованы таким образом, чтобы минимизировать межканальную интерференцию (Crosstalk) и обеспечить воспроизводимое разделение RGB-каналов. Их чёткая сепарация служит индикатором сохранности структуры цветового сигнала.</p>
+                <p>Цветовые компоненты могут различаться в зависимости от использованного печатного оборудования и красителей, но при этом строго сохраняют согласованность и свойства модели. Для наглядности на первой схеме сайта (Figure. Spectral Channel Integrity) маркеры представлены в виде конусов, разделение которых через фильтры легко контролировать визуально.</p>
+            </div>
+            <div class="lang-fi">
+                <p><strong>SCI-merkit</strong>, jotka on syntetisoitu mallin sääntöjen mukaan, ovat optisia elementtejä, joiden värikomponentit on sovitettu minimoimaan kanavien välinen häiriö (Crosstalk) ja varmistamaan RGB-kanavien toistettava erottelu. Niiden selkeä erottelu toimii värin signaalirakenteen säilymisen indikaattorina.</p>
+                <p>Värikomponentit voivat vaihdella käytetyn tulostuslaitteiston ja väriaineiden mukaan, mutta ne säilyttävät tiukasti mallin mukaisen yhteensopivuuden ja ominaisuudet. Havainnollistamiseksi sivuston ensimmäisessä kaaviossa (Figure. Spectral Channel Integrity) merkit on esitetty kartioina, joiden erottelua suodattimien läpi on helppo kontrolloida visuaalisesti.</p>
+            </div>
 
             <h3 class="lang-ru">Механизм спектрального лимитирования</h3>
             <h3 class="lang-fi">Spektraalisen rajoittamisen mekanismi</h3>
@@ -689,7 +705,7 @@
             <h3 class="lang-ru">Границы применимости модели</h3>
             <h3 class="lang-fi">Mallin soveltuvuuden rajat</h3>
             <p class="lang-ru">
-                Модель не заменяет традиционные методы цветопередачи и не ограничивает использование насыщенных цветов в художественной и дизайнерской практике. Её задача — формирование воспроизводимой спектральной среды для приложений, в которых критически важно сохранение структуры и операционной независимости RGB-каналов.
+                Модель не заменяет традиционные методы цветопередачи и не ограничивает использование насыщенных цветов в художественной и дизайнерской практике. Её задача — формирование воспроизводимой спектральной среды для приложений, в которых критически важно сохранение структуры и операциональной независимости RGB-каналов.
             </p>
             <p class="lang-fi">
                 Malli ei korvaa perinteisiä värien toistomenetelmiä eikä rajoita kylläisten värien käyttöä taiteellisessa tai suunnittelukäytännössä. Sen tavoite on muodostaa toistettava spektriympäristö sovelluksille, joissa RGB-kanavien rakenteen ja toiminnallisen riippumattomuuden säilyttäminen on kriittistä.
