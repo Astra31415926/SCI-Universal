@@ -538,9 +538,13 @@
             <h3 class="lang-ru" style="font-weight: 400; color: var(--text-muted); text-align: center;">Детерминированная нормализация спектрального отклика для систем компьютерного зрения.</h3>
             <h3 class="lang-fi" style="font-weight: 400; color: var(--text-muted); text-align: center;">Deterministinen spektrivasteen normalisointi tietokonevision järjestelmille.</h3>
             
+            <!-- ПЕРВАЯ ИЛЛЮСТРАЦИЯ (РОКИРОВКА) -->
             <div class="img-block" style="margin-top: var(--spacing-sm);">
-                <img src="main_sci_rss_blueprint.webp" alt="Spectral Channel Integrity (SCI)">
-                <div class="img-caption">Figure. Spectral Channel Integrity (SCI)</div>
+                <img src="crosstalk_comparison.png" alt="Crosstalk comparison">
+                <div class="img-caption">
+                    <span class="lang-ru">Figure. Межканальная интерференция (Crosstalk) при стандартном профилировании</span>
+                    <span class="lang-fi">Figure. Kanavien välinen häiriö (Crosstalk) standardiprofiloinnissa</span>
+                </div>
             </div>
         </header>
 
@@ -570,14 +574,6 @@
             <p class="lang-fi">
                 Tuloksena se, mikä määrittää jokaisen värin digitaalisessa kuvassa, vääristyy painotteessa. Tämä rakenteellisen eheyden menetys on erityisen kriittinen riippumattomassa monikanavaisessa tiedonkoodauksessa, jossa tarkat suhteet kanavien välillä ovat välttämättömiä luotettavalle purkamiselle.
             </p>
-            
-            <div class="img-block">
-                <img src="crosstalk_comparison.webp" alt="Crosstalk comparison">
-                <div class="img-caption">
-                    <span class="lang-ru">Рис. (A) Теоретические независимые RGB-каналы. (B) Реальное перекрытие и искажение сигналов (Crosstalk) при стандартной печати. (C) Нормализация среды по модели SCI для восстановления операционной независимости.</span>
-                    <span class="lang-fi">Kuva. (A) Teoreettiset riippumattomat RGB-kanavat. (B) Todellinen päällekkäisyys ja signaalin vääristymä (Crosstalk) standarditulostuksessa. (C) Väliympäristön normalisointi SCI-mallin mukaisesti toiminnallisen riippumattomuuden palauttamiseksi.</span>
-                </div>
-            </div>
 
             <details>
                 <summary>
@@ -617,6 +613,27 @@
             <h2 class="lang-ru">2. Математическая модель</h2>
             <h2 class="lang-fi">2. Matemaattinen malli</h2>
             
+            <!-- ВТОРАЯ ИЛЛЮСТРАЦИЯ (РОКИРОВКА) -->
+            <div class="img-block">
+                <img src="main_sci_rss_blueprint.png" alt="Spectral Channel Integrity (SCI)">
+                <div class="img-caption">Figure. Spectral Channel Integrity (SCI)</div>
+            </div>
+
+            <!-- ДОБАВЛЕННЫЙ ТЕКСТ -->
+            <p class="lang-ru">
+                SCI-маркеры, синтезированные по правилам модели, представляют собой цветовые структуры, компоненты которых согласованы таким образом, чтобы минимизировать межканальную интерференцию (Crosstalk) и обеспечить воспроизводимое разделение RGB-каналов. Их чёткая сепарация служит индикатором сохранности структуры цветового сигнала.
+            </p>
+            <p class="lang-fi">
+                SCI-mallin sääntöjen mukaan synteetiset SCI-merkit ovat väriarakenteita, joiden komponentit on sovitettu minimoimaan kanavien välinen häiriö (Crosstalk) ja varmistamaan RGB-kanavien toistettava erottelu. Niiden selkeä erottelu toimii värin signaalirakenteen säilymisen indikaattorina.
+            </p>
+
+            <p class="lang-ru">
+                Цветовые компоненты могут различаться в зависимости от используемого печатного оборудования и красителей, но при этом строго сохраняют согласованность и свойства модели. Для наглядности на первой схеме сайта (Figure. Spectral Channel Integrity) маркеры представлены в виде конусов, разделение которых через фильтры легко контролировать визуально.
+            </p>
+            <p class="lang-fi">
+                Värikomponentit voivat vaihdella käytetyn tulostuslaitteiston ja väriaineiden mukaan, mutta ne säilyttävät tiukasti mallin mukaisen yhteensopivuuden ja ominaisuudet. Havainnollistamiseksi sivuston ensimmäisessä kaaviossa (Figure. Spectral Channel Integrity) merkit on esitetty kartioina, joiden erottelua suodattimien läpi on helppo kontrolloida visuaalisesti.
+            </p>
+
             <h3 class="lang-ru">Механизм спектрального лимитирования</h3>
             <h3 class="lang-fi">Spektraalisen rajoittamisen mekanismi</h3>
             
