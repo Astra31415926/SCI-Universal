@@ -478,7 +478,7 @@
             border-top: 1px solid var(--border-color);
         }
 
-        /* Классы для мультиязычности (оставлены без изменений согласно ТЗ) */
+        /* Классы для мультиязычности */
         .lang-ru, .lang-fi {
             display: none;
         }
@@ -509,7 +509,6 @@
         </div>
             
         <div class="controls-group" style="position: absolute; right: var(--spacing-md, 20px); display: flex; gap: var(--spacing-xs); align-items: center;">
-            <!-- Кнопка языка удалена согласно ТЗ (полный перевод на русский) -->
             <button class="theme-toggle" id="themeBtn" title="Переключить тему">
                 <i class="fa-solid fa-moon"></i>
             </button>
@@ -539,7 +538,7 @@
 
             <!-- ПЕРВАЯ ИЛЛЮСТРАЦИЯ -->
             <div class="img-block" style="margin-top: var(--spacing-sm);">
-                <img src="crosstalk_comparison.png" alt="Crosstalk comparison">
+                <img src="crosstalk_comparison.webp" alt="Crosstalk comparison">
                 <div class="img-caption">Figure. "A" — RGB, "B" — CMYK, "C" — SCI.</div>
             </div>
             
@@ -621,12 +620,13 @@
     <!-- РАЗДЕЛ 4 -->
     <section id="block-4">
         <h3>4. Аппаратная верификация и контроль структуры</h3>
-        <p>
-            <strong>SCI-маркеры</strong>, синтезированные по правилам модели, представляют собой оптические элементы, цветовые компоненты которых согласованы таким образом, чтобы минимизировать межканальную интерференцию (Crosstalk) и обеспечить воспроизводимое разделение RGB-каналов. Их чёткая сепарация служит индикатором сохранности структуры цветового сигнала.
-        </p>
-        <p>
-            Цветовые компоненты могут различаться в зависимости от использованного печатного оборудования и красителей, но при этом строго сохраняют согласованность и свойства модели. Для наглядности на первой схеме сайта маркеры представлены в виде конусов, разделение которых через фильтры легко контролировать визуально.
-        </p>
+        
+        <div class="img-block" style="margin-top: var(--spacing-sm);">
+            <img src="main_sci_rss_blueprint.webp" alt="Spectral Channel Integrity (SCI)">
+            <div class="img-caption">Figure. Spectral Channel Integrity (SCI)</div>
+        </div>
+
+        <p><strong>SCI-маркеры</strong>, созданные в рамках модели, представляют собой оптические элементы, цветовые компоненты которых согласованы таким образом, чтобы минимизировать межканальную интерференцию (Crosstalk) и обеспечить воспроизводимое разделение RGB-каналов. Их чистая сепарация служит индикатором сохранности структуры цветового сигнала. Они располагаются рядом с оригиналом картины, после чего вся сцена фотографируется и репродуцируется. Измерительные элементы-SCI-маркеры печатаются так, чтобы на отпечатке полностью сохранились их свойства. Это гарантирует, что и все остальные цвета на репродукции сохранили исходную структуру и целостность цветового сигнала. Цветовые компоненты копии могут различаться в зависимости от использованного печатного оборудования и красителей, но при этом строго сохранят соотношения каналов и структуру цвета. Для наглядности на иллюстрации маркеры представлены в виде конусов, разделение которых через фильтры легко контролировать визуально.</p>
     </section>
 
     <!-- РАЗДЕЛ 5 -->
@@ -807,7 +807,7 @@
             },
             fi: {
                 short: "Valoherkän RGB-maalauksen keksijä ja tekijä, jonka teoreettinen perusta muodosti SCI-mallin pohjan",
-                full: "Mihail on saanut koulutusta grafiikan, kuvanveiston, muotoilun ja maalauksen alalla. Hän on kansainvälisten festivaalien, näyttelyiden ja taide residenssien osallistuja, taidepalkintojen laureaatti ja patennoidun kineettisen rakenteen 'Kaskadi' (Cascade) tekijä.",
+                full: "Mihail on saanut koulutusta grafiikan, kuvanveiston, muotoilun ja maalauksen alalla. Hän on kansainvälisten festivaalien, näyttelyjen ja taide residenssien osallistuja, taidepalkintojen laureaatti ja patennoidun kineettisen rakenteen 'Kaskadi' (Cascade) tekijä.",
                 btnMore: "lisätietoja",
                 btnLess: "piilota"
             }
