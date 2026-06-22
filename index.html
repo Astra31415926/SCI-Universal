@@ -478,18 +478,18 @@
             border-top: 1px solid var(--border-color);
         }
 
-        /* Классы для мультиязычности */
+        /* Классы для мультиязычности (оставлены без изменений согласно ТЗ) */
         .lang-ru, .lang-fi {
             display: none;
         }
         
         html[lang="ru"] .lang-ru { display: block; }
         html[lang="ru"] span.lang-ru, html[lang="ru"] a.lang-ru, html[lang="ru"] strong.lang-ru { display: inline; }
-        html[lang="ru"] div.lang-ru { display: block; }
+        html[lang="ru"] div.lang-ru { display: flex; }
         
         html[lang="fi"] .lang-fi { display: block; }
         html[lang="fi"] span.lang-fi, html[lang="fi"] a.lang-fi, html[lang="fi"] strong.lang-fi { display: inline; }
-        html[lang="fi"] div.lang-fi { display: block; }
+        html[lang="fi"] div.lang-fi { display: flex; }
     </style>
 </head>
 <body>
@@ -497,32 +497,19 @@
 <nav class="navbar" style="position: relative; display: flex; justify-content: center; align-items: center; width: 100%;">
         <div class="nav-container" style="display: flex; justify-content: center;">
             <div class="nav-links" style="display: flex; justify-content: center; gap: var(--spacing-sm);">
-                <a href="#block-1" class="lang-ru">Введение</a>
-                <a href="#block-1" class="lang-fi">Johdanto</a>
-                
-                <a href="#block-2" class="lang-ru">Модель</a>
-                <a href="#block-2" class="lang-fi">Malli</a>
-                
-                <a href="#block-3" class="lang-ru">Применение</a>
-                <a href="#block-3" class="lang-fi">Sovellukset</a>
-                
-                <a href="#block-4" class="lang-ru">Калибровка</a>
-                <a href="#block-4" class="lang-fi">Kalibrointi</a>
-                
-                <a href="#block-5" class="lang-ru">Статус</a>
-                <a href="#block-5" class="lang-fi">Tila</a>
-                
-                <a href="#block-6" class="lang-ru">Автор</a>
-                <a href="#block-6" class="lang-fi">Tekijä</a>
-                
-                <a href="#block-7" class="lang-ru">Контакты</a>
-                <a href="#block-7" class="lang-fi">Yhteystiedot</a>
+                <a href="#block-1">Введение</a>
+                <a href="#block-2">Проблема</a>
+                <a href="#block-3">Модель</a>
+                <a href="#block-4">Верификация</a>
+                <a href="#block-5">Применение</a>
+                <a href="#block-6">Статус</a>
+                <a href="#block-7">Автор</a>
+                <a href="#block-8">Контакты</a>
             </div>
         </div>
             
         <div class="controls-group" style="position: absolute; right: var(--spacing-md, 20px); display: flex; gap: var(--spacing-xs); align-items: center;">
-            <button class="lang-toggle" id="langBtn">FI</button>
-                
+            <!-- Кнопка языка удалена согласно ТЗ (полный перевод на русский) -->
             <button class="theme-toggle" id="themeBtn" title="Переключить тему">
                 <i class="fa-solid fa-moon"></i>
             </button>
@@ -532,415 +519,261 @@
     <main class="container">
 
     <header style="margin-top: var(--spacing-md); margin-bottom: var(--spacing-md); text-align: center;">
-            <h1 class="lang-ru" style="text-align: center;">SPECTRAL CHANNEL INTEGRITY (SCI)</h1>
-            <h1 class="lang-fi" style="text-align: center;">SPECTRAL CHANNEL INTEGRITY (SCI)</h1>
+            <h1 style="text-align: center;">SPECTRAL CHANNEL INTEGRITY (SCI)</h1>
             
-            <!-- ОБНОВЛЕННЫЙ ВВОДНЫЙ ТЕКСТ -->
-            <div class="lang-ru" style="text-align: left;">
+            <!-- РАЗДЕЛ 1 -->
+            <div style="text-align: left; margin-top: var(--spacing-md);" id="block-1">
                 <h3>1. Концептуальное введение</h3>
                 <p>Ресурс посвящён воспроизводимости структуры цветового сигнала при передаче информации между излучающими (дисплеи), отражающими (пигменты) и регистрирующими (камеры и датчики) системами. В основе подхода лежит сохранение линейной структуры спектральных каналов, обеспечивающее цветовую целостность изображения при переходе между различными физическими средами.</p>
                 <p>Модель Spectral Channel Integrity (SCI) рассматривает цвет не только как объект визуального восприятия, но и как структуру данных, требующую воспроизводимого представления независимо от используемого оборудования. Предложенный математический аппарат позволяет описывать, калибровать и контролировать процессы передачи цветовой информации на основе единых спектральных принципов.</p>
                 <p>Такой подход открывает возможность построения согласованных систем отображения, печати и регистрации изображений, в которых сохраняются взаимные пропорции RGB-компонент и обеспечивается воспроизводимость цветового сигнала на различных мониторах, матрицах камер, мобильных устройствах и физических носителях.</p>
                 <p>Цель проекта — исследование методов детерминированной цветопередачи и создание единой спектральной основы для задач компьютерного зрения, калибровки оборудования и многоканального оптического кодирования.</p>
             </div>
-            <div class="lang-fi" style="text-align: left;">
-                <h3>1. Konseptuaalinen johdanto</h3>
-                <p>Resurssi on omistettu värin signaalirakenteen toistettavuudelle siirrettäessä tietoa emittoivien (näytöt), heijastavien (pigmentit) ja rekisteröivien (kamerat ja anturit) järjestelmien välillä. Lähestymistavan perustana on spektrikanavien lineaarisen rakenteen säilyttäminen, mikä takaa kuvan värieheyden siirryttäessä eri fyysisiin väliympäristöihin.</p>
-                <p>Spectral Channel Integrity (SCI) -malli käsittelee väriä paitsi visuaalisen havainnon kohteena myös datarakenteena, joka vaatii toistettavaa esitystä riippumatta käytetystä laitteistosta. Esitetty matemaattinen apuväline mahdollistaa värin tiedonsiirtoprosessien kuvaamisen, kalibroinnin ja hallinnan yhteisten spektriperiaatteiden pohjalta.</p>
-                <p>Tämä lähestymistapa avaa mahdollisuuden rakentaa yhteensopivia kuvien näyttö-, tulostus- ja rekisteröintijärjestelmiä, joissa RGB-komponenttien keskinäiset suhteet säilyvät ja värin signaalin toistettavuus varmistetaan eri näytöillä, kameroiden matriiseilla, mobiililaitteilla ja fyysisillä väliympäristöillä.</p>
-                <p>Projektin tavoite on tutkia deterministisen värin toistamisen menetelmiä ja luoda yhtenäinen spektriperusta tietokonevision, laitteistokalibroinnin ja monikanavaisen optisen koodauksen tehtäviin.</p>
+
+            <!-- РАЗДЕЛ 2 -->
+            <div style="text-align: left; margin-top: var(--spacing-md);" id="block-2">
+                <h3>2. Проблема — межканальная интерференция (Crosstalk)</h3>
+                <p>Субтрактивные пигменты обладают широкими перекрывающимися спектрами поглощения. При печати это вызывает взаимное влияние каналов, которое нарушает исходную структуру цвета — точные соотношения интенсивностей между RGB-каналами.</p>
+                <p>В результате на отпечатке искажается то, что в цифровом изображении определяет каждый цвет. Эта потеря структурной целостности является особенно критичной при независимом многоканальном кодировании данных, где точность пропорций между каналами необходима для надежного декодирования.</p>
             </div>
-            
+
             <!-- ПЕРВАЯ ИЛЛЮСТРАЦИЯ -->
             <div class="img-block" style="margin-top: var(--spacing-sm);">
                 <img src="crosstalk_comparison.png" alt="Crosstalk comparison">
-                <div class="img-caption">
-                    <span class="lang-ru">Figure. Межканальная интерференция (Crosstalk) при стандартном профилировании</span>
-                    <span class="lang-fi">Figure. Kanavien välinen häiriö (Crosstalk) standardiprofiloinnissa</span>
-                </div>
+                <div class="img-caption">Figure. "A" — RGB, "B" — CMYK, "C" — SCI.</div>
             </div>
             
-            <!-- ДОБАВЛЕННЫЙ ТЕКСТ ПОД ПЕРВОЙ ИЛЛЮСТРАЦИЕЙ -->
-            <div class="lang-ru">
-                <p>На рисунку 1 показано цей ефект. У системі "A" (RGB) канали є незалежними та можуть бути повністю розділені. Після відтворення того самого зображення на субтрактивному носії стандартними методами "B" (CMYK) виникає міжканальне перекриття, через яке під час спектральної сепарації кожен канал містить інтерференційні компоненти інших каналів. Після застосування normalization "C" (SCI) амплітудний дисбаланс і базові рівні вирівнюються, що суттєво зменшує crosstalk і відновлює операційну незалежність каналів.</p>
+            <div style="text-align: left;">
+                <p>На рисунке 1 показан этот эффект. В системе "A" (RGB) каналы независимы и могут быть полностью разделены. После воспроизведения того же изображения на субтрактивном носителе стандартными методами "B" (CMYK) возникает межканальное перекрытие, из-за которого при спектральной сепарации каждый канал содержит интерференционные компоненты других каналов. После применения normalization "C" (SCI) амплитудный дисбаланс и базовые уровни выравниваются, что существенно уменьшает crosstalk и восстанавливает операционную независимость каналов.</p>
             </div>
-            <div class="lang-fi">
-                <p>Kuvassa 1 näytetään tämä vaikutus. Järjestelmässä "A" (RGB) kanavat ovat riippumattomia ja voidaan erottaa täysin. Kun sama kuva toistetaan subtraktiiviselle väliympäristölle standardimenetelmillä "B" (CMYK), syntyy kanavien välinen päällekkäisyys, jonka vuoksi spektrierottelun aikana jokainen kanava sisältää muiden kanavien interpolointikomponentteja. Normalisoinnin "C" (SCI) soveltamisen jälkeen amplituditasapaino ja perustasot tasataan, mikä vähentää merkittävästi crosstalk-häiriötä ja palauttaa kanavien toiminnallisen riippumattomuuden.</p>
-            </div>
-        </header>
-
-        <p class="lang-ru">
-            Ресурс посвящён синхронизации цвета между излучающими (экраны), отражающими (краски) и регистрирующими (датчики) системами.
-        </p>
-        <p class="lang-fi">
-            Tämä resurssi on omistettu värin synkronoinnille emittoivien (näytöt), heijastavien (pigmentit) ja rekisteröivien (anturit) järjestelmien välillä.
-        </p>
-        
-       <section id="block-1">
-         <h2 class="lang-ru">1. Концептуальное введение</h2>
-         <h2 class="lang-fi">1. Konseptuaalinen johdanto</h2>
-            <h3 class="lang-ru">Проблема межканальной интерференции (Crosstalk)</h3>
-            <h3 class="lang-fi">Kanavien välisen häiriön (Crosstalk) ongelma</h3>
-            
-            <p class="lang-ru">
-                Субтрактивные пигменты обладают широкими перекрывающимися спектрами поглощения. При печати это вызывает взаимное влияние каналов, которое нарушает исходную структуру цвета — точные соотношения интенсивностей между RGB-каналами.
-            </p>
-            <p class="lang-fi">
-                Subtraktiivisilla pigmenteillä on laajat, päällekkäiset absorptiospektrit. Tulostuksessa tämä aiheuttaa kanavien välistä häiriötä, joka häiritsee alkuperäistä väristructuuria — tarkkoja voimakkuussuhteita RGB-kanavien välillä.
-            </p>
-            
-            <p class="lang-ru">
-                В результате на отпечатке искажается то, что в цифровом изображении определяет каждый цвет. Эта потеря структурной целостности является особенно критичной при независимом многоканальном кодировании данных, где точность пропорций между каналами необходима для надежного декодирования.
-            </p>
-            <p class="lang-fi">
-                Tuloksena se, mikä määrittää jokaisen värin digitaalisessa kuvassa, vääristyy painotteessa. Tämä rakenteellisen eheyden menetys on erityisen kriittinen riippumattomassa monikanavaisessa tiedonkoodauksessa, jossa tarkat suhteet kanavien välillä ovat välttämättömiä luotettavalle purkamiselle.
-            </p>
 
             <details>
-                <summary>
-                    <span class="lang-ru">ПОДРОБНО: Ограничения перцепционного подхода и цели SCI</span>
-                    <span class="lang-fi">YKSITYISKOHDAT: Perceptiivisen lähestymistavan rajoitukset ja SCI:n tavoitteet</span>
-                </summary>
+                <summary>ПОДРОБНО: Ограничения перцепционного подхода и цели SCI</summary>
                 <div class="details-content">
-                    <p class="lang-ru">
+                    <p>
                         Классический подход Международного консорциума по цвету (ICC) опирается на колориметрию — подгонку координат под человеческое восприятие. Для автоматизированных систем компьютерного зрения такой подход неприемлем по следующим причинам:
                     </p>
-                    <p class="lang-fi">
-                        Klassinen International Color Consortium (ICC) -lähestymistapa perustuu kolorimetriaan — koordinaattien säätämiseen ihmisen havainnoinnin mukaiseksi. Automatisoiduille tietokonevision järjestelmille tämä lähestymistapa on epäakseptabelti seuraavista syistä:
-                    </p>
-                    
                     <ul>
-                        <li class="lang-ru"><strong>Потеря математической строгости:</strong> Перцепционные профили используют интерполяционные таблицы, что делает тракт кодирования-декодирования сигналов необратимым.</li>
-                        <li class="lang-fi"><strong>Matemaattisen tarkkuuden menetys:</strong> Perceptiiviset profiilit käyttävät interpolointitaulukoita (LUT), mikä tekee signaalin koodaus- ja purkupolun peruuttamattomaksi.</li>
-                        
-                        <li class="lang-ru"><strong>Эффекты метамеризма:</strong> При изменении спектрального состава внешнего освещения визуально «одинаковые» цвета кардинально меняют физический профиль отражения.</li>
-                        <li class="lang-fi"><strong>Metamerismivaikutukset:</strong> Kun ympäristövalon spektrikoostumus muuttuu, visuaalisesti "samojen" värien fysikaalinen heijastusprofiili muuttuu radikaalisti.</li>
-                        
-                        <li class="lang-ru"><strong>Разрушение многослойных данных:</strong> Любая попытка упаковать в один элемент несколько информационных слоев разбивается о нелинейное смешение пигментов.</li>
-                        <li class="lang-fi"><strong>Monikerroksisen datan tuhoutuminen:</strong> Mikä tahansa yritys pakata useita tietokerroksia yhteen elementtiin murtuu pigmenttien epälineaarisen sekoittumisen vuoksi.</li>
+                        <li><strong>Потеря математической строгости:</strong> Перцепционные профили используют интерполяционные таблицы, что делает тракт кодирования-декодирования сигналов необратимым.</li>
+                        <li><strong>Эффекты метамеризма:</strong> При изменении спектрального состава внешнего освещения визуально «одинаковые» цвета кардинально меняют физический профиль отражения.</li>
+                        <li><strong>Разрушение многослойных данных:</strong> Любая попытка упаковать в один элемент несколько информационных слоев разбивается о нелинейное смешение пигментов.</li>
                     </ul>
-                    
-                    <p class="lang-ru">
+                    <p>
                         <strong>Решение SCI:</strong> Модель осуществляет жесткое приведение спектрального отклика пигментов к общим физическим границам, превращая субтрактивную среду в стабильный аналог аддитивной матрицы.
                     </p>
-                    <p class="lang-fi">
-                        <strong>SCI-ratkaisu:</strong> Malli rajoittaa pigmenttien spektrivasteen tiukasti yhteisiin fyysisiin rajoihin, muuttaen subtraktiivisen väliympäristön additiivisen matriisin vakaaksi vastineeksi.
-                    </p>
                 </div>
             </details>
-        </section>
+    </header>
 
-        <section id="block-2">
-            <h2 class="lang-ru">2. Математическая модель</h2>
-            <h2 class="lang-fi">2. Matemaattinen malli</h2>
-            
-            <!-- ВТОРАЯ ИЛЛЮСТРАЦИЯ -->
-            <div class="img-block">
-                <img src="main_sci_rss_blueprint.png" alt="Spectral Channel Integrity (SCI)">
-                <div class="img-caption">Figure. Spectral Channel Integrity (SCI)</div>
-            </div>
+    <!-- РАЗДЕЛ 3 -->
+    <section id="block-3" style="margin-top: var(--spacing-md);">
+        <h3>3. Математическая модель (механизм спектрального лимитирования)</h3>
+        
+        <div class="img-block" style="width: 85%; margin: var(--spacing-md) auto;">
+            <img src="sci_spectral_scaling_blueprint.webp" alt="Spectral scaling mechanism">
+            <div class="img-caption">Figure. Спектральное масштабирование в модели SCI. Кривые отражения до нормализации (слева) и после нормализации относительно общих верхнего и нижнего уровней отсчета (справа).</div>
+        </div>
 
-            <!-- ОБНОВЛЕННЫЙ ТЕКСТ ПОД ВТОРОЙ ИЛЛЮСТРАЦИЕЙ -->
-            <div class="lang-ru">
-                <p><strong>SCI-маркеры</strong>, синтезированные по правилам модели, представляют собой оптические элементы, цветовые компоненты которых согласованы таким образом, чтобы минимизировать межканальную интерференцию (Crosstalk) и обеспечить воспроизводимое разделение RGB-каналов. Их чёткая сепарация служит индикатором сохранности структуры цветового сигнала.</p>
-                <p>Цветовые компоненты могут различаться в зависимости от использованного печатного оборудования и красителей, но при этом строго сохраняют согласованность и свойства модели. Для наглядности на первой схеме сайта (Figure. Spectral Channel Integrity) маркеры представлены в виде конусов, разделение которых через фильтры легко контролировать визуально.</p>
-            </div>
-            <div class="lang-fi">
-                <p><strong>SCI-merkit</strong>, jotka on syntetisoitu mallin sääntöjen mukaan, ovat optisia elementtejä, joiden värikomponentit on sovitettu minimoimaan kanavien välinen häiriö (Crosstalk) ja varmistamaan RGB-kanavien toistettava erottelu. Niiden selkeä erottelu toimii värin signaalirakenteen säilymisen indikaattorina.</p>
-                <p>Värikomponentit voivat vaihdella käytetyn tulostuslaitteiston ja väriaineiden mukaan, mutta ne säilyttävät tiukasti mallin mukaisen yhteensopivuuden ja ominaisuudet. Havainnollistamiseksi sivuston ensimmäisessä kaaviossa (Figure. Spectral Channel Integrity) merkit on esitetty kartioina, joiden erottelua suodattimien läpi on helppo kontrolloida visuaalisesti.</p>
-            </div>
-
-            <h3 class="lang-ru">Механизм спектрального лимитирования</h3>
-            <h3 class="lang-fi">Spektraalisen rajoittamisen mekanismi</h3>
-            
-            <p class="lang-ru">
-                <strong>Якорь системы — спектральный ограничитель.</strong> В качестве опорного компонента выбирается пигмент, обладающий наименьшим физическим динамическим диапазоном в наборе (в CMY-системах это обычно Magenta). Спектральные характеристики остальных пигментов принудительно масштабируются относительно физических границ этого ограничителя, формируя единые верхний \(U_{ref}\) и нижний \(L_{ref}\) опорные уровни.
-            </p>
-            <p class="lang-fi">
-                <strong>Järjestelmän ankkuri on spektraalinen rajoitin.</strong> Viitekomponentiksi valitaan pigmentti, jolla on pienin fyysinen dynaaminen alue joukossa (CMY-järjestelmissä tämä on yleensä Magenta). Muiden pigmenttien spektriset ominaisuudet skaalataan pakotetusti tämän rajoittimen fyysisiin rajoihin nähden, muodostaen yhtenäiset ylemmän \(U_{ref}\) ja alemman \(L_{ref}\) referenssitason.
-            </p>
-
-            <div class="img-block" style="width: 85%; margin: var(--spacing-md) auto;">
-                <img src="sci_spectral_scaling_blueprint.webp" alt="Spectral scaling mechanism">
-                <div class="img-caption">
-                    <span class="lang-ru">Спектральное масштабирование в модели SCI. Кривые отражения до нормализации (слева) и после нормализации относительно общих верхнего и нижнего уровней отсчета (справа).</span>
-                    <span class="lang-fi">Spektrinen skaalaus SCI-mallissa. Heijastuskäyrät ennen normalisointia (vasemmalla) ja normalisoinnin jälkeen suhteessa yhteisiin ylempään ja alempaan referenssitasoon (oikealla).</span>
-                </div>
-            </div>
-
-            <details>
-                <summary>
-                    <span class="lang-ru">ПОДРОБНО: Математический аппарат масштабирования</span>
-                    <span class="lang-fi">YKSITYISKOHDAT: Skaalauksen matemaattinen apuväline</span>
-                </summary>
-                <div class="details-content">
-                    <div class="formula-container">
-                        <h3 class="lang-ru">Амплитудное масштабирование</h3>
-                        <h3 class="lang-fi">Amplitudiskaalaus</h3>
-                        <div class="formula-large">
-                            $$I_{scaled}^{c}(\lambda) = I_{raw}^{c}(\lambda) \cdot \frac{A_{max}(L)}{A_{max}(c)}$$                         </div>
-                        <div class="formula-explanation">
-                            <strong><span class="lang-ru">где:</span><span class="lang-fi">missä:</span></strong><br>
-                            \(I_{raw}^{c}(\lambda)\) — <span class="lang-ru">исходная интенсивность отражения пигмента на длине волны \(\lambda\);</span><span class="lang-fi">pigmentin alkuperäinen heijastusintensiteetti aallonpituudella \(\lambda\);</span><br>
-                            \(A_{max}(L)\) — <span class="lang-ru">максимальная физическая амплитуда выбранного спектрального ограничителя;</span><span class="lang-fi">valitun spektraalisen rajoittimen maksimaalinen fyysinen amplitudi;</span><br>
-                            \(A_{max}(c)\) — <span class="lang-ru">максимальная амплитуда рассматриваемого пигмента.</span><span class="lang-fi">tarkasteltavan pigmentin maksimaalinen amplitudi.</span>
-                        </div>
-                    </div>
-                    
-                    <div class="formula-container" style="border-top: 1px solid var(--border-color); margin-top: 1rem; padding-top: 1rem;">
-                        <h3 class="lang-ru">Формирование общих опорных уровней</h3>
-                        <h3 class="lang-fi">Yhteisten referenssitasojen muodostaminen</h3>
-                        <div class="formula-large">
-                            $$S_{out} = \frac{S_{in} - L_{ref}}{U_{ref} - L_{ref}}$$                         </div>
-                        <div class="formula-explanation">
-                            <strong><span class="lang-ru">где:</span><span class="lang-fi">missä:</span></strong><br>
-                            \(S_{in}\) — <span class="lang-ru">значение входного сигнала после амплитудного выравнивания;</span><span class="lang-fi">sisääntulevan signaalin arvo amplitudin tasaamisen jälkeen;</span><br>
-                            \(U_{ref}\) — <span class="lang-ru">общий верхний референсный уровень системы;</span><span class="lang-fi">järjestelmän yhteinen ylempi referenssitaso;</span><br>
-                            \(L_{ref}\) — <span class="lang-ru">общий нижний референсный уровень системы.</span><span class="lang-fi">järjestelmän yhteinen alempi referenssitaso.</span>
-                        </div>
-                    </div>
-                </div>
-            </details>
-
-            <h3 class="lang-ru">Границы применимости модели</h3>
-            <h3 class="lang-fi">Mallin soveltuvuuden rajat</h3>
-            <p class="lang-ru">
-                Модель не заменяет традиционные методы цветопередачи и не ограничивает использование насыщенных цветов в художественной и дизайнерской практике. Её задача — формирование воспроизводимой спектральной среды для приложений, в которых критически важно сохранение структуры и операциональной независимости RGB-каналов.
-            </p>
-            <p class="lang-fi">
-                Malli ei korvaa perinteisiä värien toistomenetelmiä eikä rajoita kylläisten värien käyttöä taiteellisessa tai suunnittelukäytännössä. Sen tavoite on muodostaa toistettava spektriympäristö sovelluksille, joissa RGB-kanavien rakenteen ja toiminnallisen riippumattomuuden säilyttäminen on kriittistä.
-            </p>
-            
-            <p><strong><span class="lang-ru">Области применения:</span><span class="lang-fi">Sovellusalueet:</span></strong></p>
-            <ul>
-                <li class="lang-ru">компьютерное зрение и системы искусственного интеллекта;</li>
-                <li class="lang-fi">tietokonevisio ja tekoälyjärjestelmät;</li>
-                
-                <li class="lang-ru">прецизионная калибровка оптических систем;</li>
-                <li class="lang-fi">optisten järjestelmien korkeatarkkuuskalibrointi;</li>
-                
-                <li class="lang-ru">многоканальное спектральное кодирование данных.</li>
-                <li class="lang-fi">monikanavainen spektritiedon koodaus.</li>
-            </ul>
-            
-            <p class="lang-ru">
-                Подобно тому как камертон не заменяет музыку, а служит эталоном настройки, SCI не подменяет существующие цветовые пространства, а предоставляет инструмент для задач, требующих детерминированного разделения информационных каналов.
-            </p>
-            <p class="lang-fi">
-                Aivan kuten virityskaarina ei korvaa musiikkia, vaan toimii viritysstandardina, SCI ei syrjäytä olemassa olevia väriavaruuksia, vaan tarjoaa työkalun tehtäviin, jotka vaativat determinististä tietokanavien erottelua.
-            </p>
-        </section>
-
-        <section id="block-3">
-            <h2 class="lang-ru">3. Практическое применение в компьютерном зрении</h2>
-            <h2 class="lang-fi">3. Käytännön soveltaminen tietokonevisiossa</h2>
-            
-            <p class="lang-ru">
-                Идея увеличить емкость QR-кодов за счет использования цветовых каналов (RGB) не нова. Но при обычной печати в формате CMYK информация в каналах теряется из-за перекрестных искажений (Crosstalk), и решить эту проблему алгоритмами декодирования практически невозможно. Модель SCI формирует физически устойчивую структуру цветовых каналов, адаптированную под особенности печати, что исключает потерю данных. Она позволяет системе компьютерного зрения четко видеть и дифференцировать каждый цветовой канал в отдельности, что кратно повышает точность распознавания кодов в реальных условиях.
-            </p>
-            <p class="lang-fi">
-                Ajatus kasvattaa QR-koodien kapasiteettia hyödyntämällä värikanavia (RGB) ei ole uusi. Standardissa CMYK-tulostuksessa kanavatieto kuitenkin menetetään poikkisuuntainen häiriön (Crosstalk) vuoksi, ja ongelman ratkaisemin dekoodausalgoritmeilla on käytännössä mahdotonta. SCI-malli muodostaa fyysisesti vakaan värikanavien rakenteen, joka on mukautettu tulostuksen erityispiirteisiin, mikä poistaa täysin datan menetyksen. Se mahdollistaa tietokonevision järjestelmän nähdä ja erottaa jokaisen värikanavan yksilöidysti, mikä moninkertaistaa koodintunnistuksen tarkkuuden todellisissa olosuhteissa.
-            </p>
-
-            <div class="generators-grid">
-                <div class="gen-card">
-                    <div class="gen-img-wrapper">
-                        <img src="Mykhailo Kashkarov.webp" alt="Multi-layer QR code">
-                    </div>
-                    <div class="gen-info">
-                        <div>
-                            <h3>Spectrum QR Generator (3-in-1)</h3>
-                            <p style="font-size: 0.9rem;" class="lang-ru">Параллельная упаковка трех независимых массивов данных в один физический QR-код с разделением по RGB-каналам.</p>
-                            <p style="font-size: 0.9rem;" class="lang-fi">Kolmen riippumattoman tietotaulukon rinnakkainen pakkaaminen yhteen fyysiseen QR-koodiin erottelulla RGB-kanaviin.</p>
-                        </div>
-                        <a href="https://astra31415926.github.io/QR.G.B.-ART/" target="_blank" class="btn-link">
-                            <i class="fa-solid fa-wand-magic-sparkles"></i> 
-                            <span class="lang-ru">Открыть генератор 3-в-1</span>
-                            <span class="lang-fi">Avaa 3-in-1-generaattori</span>
-                        </a>
+        <details>
+            <summary>ПОДРОБНО: Математический аппарат масштабирования</summary>
+            <div class="details-content">
+                <div class="formula-container">
+                    <h3>Амплитудное масштабирование</h3>
+                    <div class="formula-large">
+                        $$I_{scaled}^{c}(\lambda) = I_{raw}^{c}(\lambda) \cdot \frac{A_{max}(L)}{A_{max}(c)}$$                     </div>
+                    <div class="formula-explanation">
+                        <strong>где:</strong><br>
+                        \(I_{raw}^{c}(\lambda)\) — исходная интенсивность отражения пигмента на длине волны \(\lambda\);<br>
+                        \(A_{max}(L)\) — максимальная физическая амплитуда выбранного спектрального ограничителя;<br>
+                        \(A_{max}(c)\) — максимальная амплитуда рассматриваемого пигмента.
                     </div>
                 </div>
                 
-                <div class="gen-card">
-                    <div class="gen-img-wrapper">
-                        <img src="qrnament-mandala.webp" alt="Ornamental QR code">
-                    </div>
-                    <div class="gen-info">
-                        <div>
-                            <h3>QRnament Creator</h3>
-                            <p style="font-size: 0.9rem;" class="lang-ru">Алгоритм бесшовного внедрения матричных структур данных в орнаментальные композиции и паттерны.</p>
-                            <p style="font-size: 0.9rem;" class="lang-fi">Algoritmi matriisidatarakenteiden saumattomaan upottamiseen koristeellisiin kokoonpanoihin ja kuvioihin.</p>
-                        </div>
-                        <a href="https://astra31415926.github.io/QRnament2/" target="_blank" class="btn-link">
-                            <i class="fa-solid fa-bezier-curve"></i> 
-                            <span class="lang-ru">Открыть QRnament</span>
-                            <span class="lang-fi">Avaa QRnament</span>
-                        </a>
+                <div class="formula-container" style="border-top: 1px solid var(--border-color); margin-top: 1rem; padding-top: 1rem;">
+                    <h3>Формирование общих опорных уровней</h3>
+                    <div class="formula-large">
+                        $$S_{out} = \frac{S_{in} - L_{ref}}{U_{ref} - L_{ref}}$$                     </div>
+                    <div class="formula-explanation">
+                        <strong>где:</strong><br>
+                        \(S_{in}\) — значение входного сигнала после амплитудного выравнивания;<br>
+                        \(U_{ref}\) — общий верхний референсный уровень системы;<br>
+                        \(L_{ref}\) — общий нижний референсный уровень системы.
                     </div>
                 </div>
             </div>
+        </details>
 
-            <p style="font-size: 0.95rem; font-style: italic; background: rgba(56, 189, 248, 0.05); padding: 1rem; border-left: 3px solid var(--accent-primary); border-radius: 4px; margin-bottom: var(--spacing-md);">
-                <strong class="lang-ru">Обратите внимание:</strong><strong class="lang-fi">Huomaa:</strong>
-                <span class="lang-ru"> представленные веб-генераторы формируют изображения в цифровом виде, без адаптации к печати. В исходном цифровом виде эти структуры гарантированно декодируются программным обеспечением только при считывании непосредственно с экрана вашего монитора.<br><br>Для корректного переноса на физический носитель (бумагу, пластик или холст) параметры генерируемого файла должны пройти предварительную подготовку к печати согласно алгоритмам SCI.</span>
-                <span class="lang-fi"> esitetyt verkkogeneraattorit luovat kuvia digitaalisessa muodossa ilman tulostusmukautusta. Raakadigitaalisessa muodossaan nämä rakenteet taataan ohjelmiston purkavan vain luettaessa suoraan näytöltäsi.<br><br>Oikea siirto fyysiseen väliympäristöön (paperi, muovi tai kankaalle) edellyttää, että luodun tiedoston parametit on esikäsiteltävä tulostusta varten SCI-algoritmien mukaisesti.</span>
-            </p>
+        <h3>Границы применимости модели</h3>
+        <p>
+            Модель не заменяет традиционные методы цветопередачи и не ограничивает использование насыщенных цветов в художественной и дизайнерской практике. Её задача — формирование воспроизводимой спектральной среды для приложений, в которых критически важно сохранение структуры и операциональной независимости RGB-каналов.
+        </p>
+        <p>
+            Подобно тому как камертон не заменяет музыку, а служит эталоном настройки, SCI не подменяет существующие цветовые пространства, а предоставляет инструмент для задач, требующих детерминированного разделения информационных каналов.
+        </p>
+        <p><strong>Области применения:</strong></p>
+        <ul>
+            <li>компьютерное зрение и системы искусственного интеллекта;</li>
+            <li>прецизионная калибровка оптических систем;</li>
+            <li>многоканальное спектральное кодирование данных.</li>
+        </ul>
+    </section>
 
-            <h3 class="lang-ru">Подраздел: Практическое испытание</h3>
-            <h3 class="lang-fi">Alaosio: Käytännön testaus</h3>
-            <p class="lang-ru">
-                Эксперимент с нанесением многослойного цветового кода и орнамента акриловыми пигментами на полотно по принципам модели SCI. Полученные результаты демонстрируют принципиальную возможность декодирования многослойных структур, сформированных на физическом носителе. Эксперимент носит предварительный характер и требует дальнейшей оптимизации алгоритмов кодирования и считывания.
-            </p>
-            <p class="lang-fi">
-                Kokeilu, jossa monikerroksinen värikoodi ja ornamentti levitettiin akryylipigmenteillä kankaalle SCI-mallin periaatteiden mukaisesti. Saadut tulokset osoittavat perusmahdollisuuden purkaa fyysiseen väliympäristöön muodostettuja monikerroksisia rakenteita. Kokeilu on alustava ja vaatii koodaus- ja lukualgoritmien jatkokehittämistä.
-            </p>
+    <!-- РАЗДЕЛ 4 -->
+    <section id="block-4">
+        <h3>4. Аппаратная верификация и контроль структуры</h3>
+        <p>
+            <strong>SCI-маркеры</strong>, синтезированные по правилам модели, представляют собой оптические элементы, цветовые компоненты которых согласованы таким образом, чтобы минимизировать межканальную интерференцию (Crosstalk) и обеспечить воспроизводимое разделение RGB-каналов. Их чёткая сепарация служит индикатором сохранности структуры цветового сигнала.
+        </p>
+        <p>
+            Цветовые компоненты могут различаться в зависимости от использованного печатного оборудования и красителей, но при этом строго сохраняют согласованность и свойства модели. Для наглядности на первой схеме сайта маркеры представлены в виде конусов, разделение которых через фильтры легко контролировать визуально.
+        </p>
+    </section>
 
-            <div class="img-dual-grid">
-                <div class="img-block" style="margin:0;">
-                    <img src="steganography_acrylic_canvas.webp" alt="Multi-layer code on canvas">
+    <!-- РАЗДЕЛ 5 -->
+    <section id="block-5">
+        <h3>5. Применение в компьютерном зрении</h3>
+        <p>
+            Идея увеличить емкость QR-кодов за счет использования цветовых каналов (RGB) не нова. Но при обычной печати в формате CMYK информация в каналах теряется из-за перекрестных искажений (Crosstalk), и решить эту проблему алгоритмами декодирования практически невозможно. Модель SCI формирует физически устойчивую структуру цветовых каналов, адаптированную под особенности печати, что исключает потерю данных. Она позволяет системе компьютерного зрения четко видеть и дифференцировать каждый цветовой канал в отдельности, что кратно повышает точность распознавания кодов в реальных условиях.
+        </p>
+
+        <div class="generators-grid">
+            <div class="gen-card">
+                <div class="gen-img-wrapper">
+                    <img src="Mykhailo Kashkarov.webp" alt="Multi-layer QR code">
                 </div>
-                <div class="img-block" style="margin:0;">
-                    <img src="handwork_01.webp" alt="Ornamental acrylic code">
+                <div class="gen-info">
+                    <div>
+                        <h3>Spectrum QR Generator (3-in-1)</h3>
+                        <p style="font-size: 0.9rem;">Параллельная упаковка трех независимых массивов данных в один физический QR-код с разделением по RGB-каналам.</p>
+                    </div>
+                    <a href="https://astra31415926.github.io/QR.G.B.-ART/" target="_blank" class="btn-link">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Открыть генератор 3-в-1
+                    </a>
                 </div>
             </div>
-        </section>
-
-      <section id="block-4">
-            <h2 class="lang-ru">4. Аппаратная верификация и контроль структуры</h2>
-            <h2 class="lang-fi">4. Laitteistoverifiointi ja rakenteen hallinta</h2>
             
-            <p class="lang-ru">
-                Для контроля точности репродукции модель SCI использует верификацию с помощью эталонных оптических маркеров — тест-объектов с градиентными конусами. Эти конусы имеют специфические спектральные свойства: они спроектированы так, чтобы изолированно отображаться строго в своих RGB-каналах, демонстрируя минимальный межканальный шум <strong>(Crosstalk)</strong>.
-            </p>
-            <p class="lang-fi">
-                Jäljentämistarkkuuden hallitsemiseksi SCI-malli käyttää verifiointia referenssioptisten merkkien — gradienttikartioita sisältävien testimatriisien — avulla. Näillä kartioilla on spesifit spektriominaisuudet: ne on suunniteltu eristymään tiukasti omiin RGB-kanaviinsa, osoittaen minimaalisen kanavien välisen häiriön <strong>(Crosstalk)</strong>.
-            </p>
+            <div class="gen-card">
+                <div class="gen-img-wrapper">
+                    <img src="qrnament-mandala.webp" alt="Ornamental QR code">
+                </div>
+                <div class="gen-info">
+                    <div>
+                        <h3>QRnament Creator</h3>
+                        <p style="font-size: 0.9rem;">Алгоритм бесшовного внедрения матричных структур данных в орнаментальные композиции и паттерны.</p>
+                    </div>
+                    <a href="https://astra31415926.github.io/QRnament2/" target="_blank" class="btn-link">
+                        <i class="fa-solid fa-bezier-curve"></i> Открыть QRnament
+                    </a>
+                </div>
+            </div>
+        </div>
 
-            <p class="lang-ru" style="margin-left: 20px; font-weight: 500;">
-                Технологический цикл контроля:<br>
-                1. <strong>Фиксация:</strong> Матрица с конусами размещается рядом с оригиналом и фотографируется вместе с ним в одном кадре.<br>
-                2. <strong>Тиражирование:</strong> Полученное цифровое изображение, содержащее оригинал и маркеры, отправляется на печать.<br>
-                3. <strong>Контроль:</strong> На готовой печатной продукции оценивается состояние конусов. Их съёмка через узкополосные RGB-фильтры или освещение соответствующими источниками света позволяет проверить сепарацию каналов непосредственно на отпечатке.
-            </p>
-            <p class="lang-fi" style="margin-left: 20px; font-weight: 500;">
-                Prosessityönkulku:<br>
-                1. <strong>Kaappaus:</strong> Kartiomatriisi asetetaan alkuperäisen teoksen viereen ja valokuvataan yhdessä samassa kehyksessä.<br>
-                2. <strong>Replikointi:</strong> Syntynyt digitaalinen kuva, joka sisältää sekä alkuperäisen että merkit, lähetetään tulostettavaksi.<br>
-                3. <strong>Valvonta:</strong> Kanavaeristystä arvioidaan suoraan lopullisesta painatteesta. Painettujen kartioiden kuvaaminen kapeakaistaisilla RGB-suodattimilla tai valaisemalla niitä vastaavilla valonlähteillä mahdollistaa kanavaisoloinnin todentamisen.
-            </p>
+        <p style="font-size: 0.95rem; font-style: italic; background: rgba(56, 189, 248, 0.05); padding: 1rem; border-left: 3px solid var(--accent-primary); border-radius: 4px; margin-bottom: var(--spacing-md);">
+            <strong>Обратите внимание:</strong> представленные веб-генераторы формируют изображения в цифровом виде, без адаптации к печати. В исходном цифровом виде эти структуры гарантированно декодируются программным обеспечением только при считывании непосредственно с экрана вашего монитора.<br><br>Для корректного переноса на физический носитель (бумагу, пластик или холст) параметры генерируемого файла должны пройти предварительную подготовку к печати согласно алгоритмам SCI.
+        </p>
 
-            <p class="lang-ru">
-                Если конусы на финальном отпечатке сохраняют чёткую изоляцию, это подтверждает, что процесс печати не нарушил структуру цвета. Модель SCI гарантирует <strong>линейно правильную структуру каналов</strong>: при ограничениях насыщенности краски изображение может потерять в сочности, но оно строго сохраняет исходные пропорции интенсивностей RGB, удерживая цветовую целостность и узнаваемость оригинала.
-            </p>
-            <p class="lang-fi">
-                Painettujen kartioiden selkeä eristyminen vahvistaa, ettei tulostusprosessi häirinnvä väristructuuria. SCI-malli takaa <strong>lineaarisesti oikean kanavarakenteen</strong>: musteen kylläisyyden rajoituksissa kuva voi menettää elävyyttä, mutta se säilyttää tiukasti alkuperäiset RGB-voimakkuussuhteet, ylläpitäen värien eheyttä ja alkuperäisen tunnistettavuuden.
-            </p>
+        <h3>Подраздел: Практическое испытание</h3>
+        <p>
+            Эксперимент с нанесением многослойного цветового кода и орнамента акриловыми пигментами на полотно по принципам модели SCI. Полученные результаты демонстрируют принципиальную возможность декодирования многослойных структур, сформированных на физическом носителе. Эксперимент носит предварительный характер и требует дальнейшей оптимизации алгоритмов кодирования и считывания.
+        </p>
 
-            <p class="lang-ru" style="font-style: italic; opacity: 0.8;">
-                На данный момент этот метод находится на стадии концепта и нуждается в экспериментальной верификации.
-            </p>
-            <p class="lang-fi" style="font-style: italic; opacity: 0.8;">
-                Tällä hetkellä tämä menetelmä on konseptivaiheessa ja vaatii kokeellista verifiointia.
-            </p>
-        </section>
-        <section id="block-5" class="project-status">
-            <h2 class="lang-ru">5. Статус проекта</h2>
-            <h2 class="lang-fi">5. Projektin tila</h2>
-            <p class="lang-ru">Модель SCI находится в стадии активного развития, формирования теоретической базы и проведения практических экспериментов.</p>
-            <p class="lang-fi">SCI-malli on aktiivisen kehityksen, teoreettisen viitekehyksen rakentamisen ja käytännön kokeilujen vaiheessa.</p>
-            
-            <h3 class="lang-ru">Для масштабирования проекта необходимы:</h3>
-            <h3 class="lang-fi">Projektin skaalaamiseksi tarvitaan seuraavaa:</h3>
-            <ul>
-                <li class="lang-ru"><strong>Тесты на профессиональном печатном оборудовании.</strong></li>
-                <li class="lang-fi"><strong>Testit ammattitason tulostuslaitteistoilla.</strong></li>
+        <div class="img-dual-grid">
+            <div class="img-block" style="margin:0;">
+                <img src="steganography_acrylic_canvas.webp" alt="Multi-layer code on canvas">
+            </div>
+            <div class="img-block" style="margin:0;">
+                <img src="handwork_01.webp" alt="Ornamental acrylic code">
+            </div>
+        </div>
+    </section>
+
+    <!-- РАЗДЕЛ 6 -->
+    <section id="block-6">
+        <h3>6. Статус проекта</h3>
+        <p>Модель SCI находится в стадии активного развития, формирования теоретической базы и проведения практических экспериментов.</p>
+        
+        <h3>Для масштабирования проекта необходимы:</h3>
+        <ul>
+            <li><strong>Тесты на профессиональном печатном оборудовании.</strong></li>
+            <li><strong>Исследования с использованием спектрометра</strong> — для точной оценки того, как алгоритмы компьютерного зрения взаимодействуют с цветом в различных условиях.</li>
+        </ul>
+        
+        <p>Проект открыт и приглашает к сотрудничеству специалистов в области полиграфии, колориметрии и Computer Vision, а также программистов, спонсоров и всех, кому интересен этот проект.</p>
+    </section>
+
+    <!-- РАЗДЕЛ 7 -->
+    <section id="block-7">
+        <h3>7. Автор</h3>
+        <div class="author-card">
+            <div class="author-profile" style="display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: start;">
                 
-                <li class="lang-ru"><strong>Исследования с использованием спектрометра</strong> — для точной оценки того, как алгоритмы компьютерного зрения взаимодействуют с цветом в различных условиях.</li>
-                <li class="lang-fi"><strong>Spektrometritutkimukset</strong> — arvioidakseen tarkasti, miten tietokonevisioalgoritmit vuorovaikuttavat värin kanssa eri olosuhteissa.</li>
-            </ul>
-            
-            <p class="cooperation lang-ru">Проект открыт и приглашает к сотрудничеству специалистов в области полиграфии, колориметрии и Computer Vision, а также программистов, спонсоров и всех, кому интересен этот проект.</p>
-            <p class="cooperation lang-fi">Projekti on avoin ja kutsuu yhteistyöhön asiantuntijoita painatusalan, kolorimetrian ja tietokonevision aloilta sekä ohjelmoijia, sponsoreita ja kaikkia, joita tämä suunta kiinnostaa.</p>
-        </section>
-
-        <section id="block-6">
-            <h2 class="lang-ru">6. Об авторе</h2>
-            <h2 class="lang-fi">6. Tekijästä</h2>
-            <div class="author-card">
-                <div class="author-profile" style="display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: start;">
-                    
-                    <img src="avatar.webp" alt="Mykhailo Kashkarov" class="author-img" style="grid-row: span 3;">
-                    
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 15px;">
-                        <div>
-                            <h3 style="margin: 0; font-size: 1.5rem;" class="lang-ru">Михаил Кашкаров</h3>
-                            <h3 style="margin: 0; font-size: 1.5rem;" class="lang-fi">Mihail Kaškarov</h3>
-                            <p style="font-size: 0.95rem; font-style: italic; margin: 5px 0 0 0; color: #888;" class="lang-ru">Science art художник</p>
-                            <p style="font-size: 0.95rem; font-style: italic; margin: 5px 0 0 0; color: #888;" class="lang-fi">Science art -taiteilija</p>
-                        </div>
-                        <a href="https://astra31415926.github.io/" target="_blank" class="btn-link" style="margin: 0; white-space: nowrap;">
-                            <i class="fa-solid fa-palette"></i> 
-                            <span class="lang-ru">Галерея автора</span>
-                            <span class="lang-fi">Tekijän galleria</span>
-                        </a>
+                <img src="avatar.webp" alt="Михаил Кашкаров" class="author-img" style="grid-row: span 3;">
+                
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 15px;">
+                    <div>
+                        <h3 style="margin: 0; font-size: 1.5rem;">Михаил Кашкаров</h3>
+                        <p style="font-size: 0.95rem; font-style: italic; margin: 5px 0 0 0; color: #888;">Science art художник</p>
                     </div>
-                    
-                    <p id="author-text" style="font-size: 0.9rem; margin: 15px 0 0 0; line-height: 1.5; max-width: 90%;"></p>
-                    
-                    <div style="margin-top: 15px;">
-                        <button onclick="toggleBiography()" id="btn-toggle" class="btn-link" style="background: none; border: 1px solid currentColor; cursor: pointer; padding: 5px 25px; border-radius: 4px;">подробнее</button>
-                    </div>
-                    
+                    <a href="https://astra31415926.github.io/" target="_blank" class="btn-link" style="margin: 0; white-space: nowrap;">
+                        <i class="fa-solid fa-palette"></i> Галерея автора
+                    </a>
                 </div>
+                
+                <p id="author-text" style="font-size: 0.9rem; margin: 15px 0 0 0; line-height: 1.5; max-width: 90%;"></p>
+                
+                <div style="margin-top: 15px;">
+                    <button onclick="toggleBiography()" id="btn-toggle" class="btn-link" style="background: none; border: 1px solid currentColor; cursor: pointer; padding: 5px 25px; border-radius: 4px;">подробнее</button>
+                </div>
+                
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="block-7">
-            <h2 class="lang-ru">7. Контакты и публикации</h2>
-            <h2 class="lang-fi">7. Yhteystiedot ja julkaisut</h2>
-            <div class="contact-grid">
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-                    <div><strong>Zenodo (Preprints):</strong><br><a href="https://zenodo.org/records/19633526" target="_blank">Publication Repository</a></div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fa-brands fa-medium"></i></div>
-                    <div><strong>Medium:</strong><br><a href="https://medium.com/@Bakminsterfuler" target="_blank">@Bakminsterfuler</a></div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fa-brands fa-github"></i></div>
-                    <div><strong>GitHub:</strong><br><a href="https://github.com/Astra31415926" target="_blank">@Astra31415926</a></div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fa-brands fa-youtube"></i></div>
-                    <div><strong>YouTube:</strong><br><a href="https://www.youtube.com/@Michael-RGB-ART/videos" target="_blank">Michael-RGB-ART</a></div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fa-brands fa-facebook"></i></div>
-                    <div><strong>Facebook:</strong><br><a href="https://www.facebook.com/profile.php?id=100070020556929" target="_blank">FB Profile</a></div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fa-brands fa-x-twitter"></i></div>
-                    <div><strong>X (Twitter):</strong><br><a href="https://x.com/MihailKashkarov" target="_blank">@MihailKashkarov</a></div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fa-brands fa-linkedin"></i></div>
-                    <div><strong>LinkedIn:</strong><br><a href="https://www.linkedin.com/in/%D0%BC%D0%B8%D1%85%D0%B0%D0%B9%D0%BB%D0%BE-%D0%BA%D0%B0%D1%88%D0%BA%D0%B0%D1%80%D0%BE%D0%B2-281379162/" target="_blank">Михайло Кашкаров</a></div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
-                    <div><strong>Email:</strong><br><a href="mailto:bakminsterfuler@gmail.com">bakminsterfuler@gmail.com</a></div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fa-solid fa-paper-plane"></i></div>
-                    <div><strong>Telegram:</strong><br><a href="https://t.me/MichaelKashkarov" target="_blank">@MichaelKashkarov</a></div>
-                </div>
+    <!-- РАЗДЕЛ 8 -->
+    <section id="block-8">
+        <h3>8. Контакты</h3>
+        <div class="contact-grid">
+            <div class="contact-item">
+                <div class="contact-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                <div><strong>Zenodo (Препринты):</strong><br><a href="https://zenodo.org/records/19633526" target="_blank">Репозиторий публикации</a></div>
             </div>
-        </section>
+            <div class="contact-item">
+                <div class="contact-icon"><i class="fa-brands fa-medium"></i></div>
+                <div><strong>Medium:</strong><br><a href="https://medium.com/@Bakminsterfuler" target="_blank">@Bakminsterfuler</a></div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon"><i class="fa-brands fa-github"></i></div>
+                <div><strong>GitHub:</strong><br><a href="https://github.com/Astra31415926" target="_blank">@Astra31415926</a></div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon"><i class="fa-brands fa-youtube"></i></div>
+                <div><strong>YouTube:</strong><br><a href="https://www.youtube.com/@Michael-RGB-ART/videos" target="_blank">Michael-RGB-ART</a></div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon"><i class="fa-brands fa-facebook"></i></div>
+                <div><strong>Facebook:</strong><br><a href="https://www.facebook.com/profile.php?id=100070020556929" target="_blank">Профиль FB</a></div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon"><i class="fa-brands fa-x-twitter"></i></div>
+                <div><strong>X (Twitter):</strong><br><a href="https://x.com/MihailKashkarov" target="_blank">@MihailKashkarov</a></div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon"><i class="fa-brands fa-linkedin"></i></div>
+                <div><strong>LinkedIn:</strong><br><a href="https://www.linkedin.com/in/%D0%BC%D0%B8%D1%85%D0%B0%D0%B9%D0%BB%D0%BE-%D0%BA%D0%B0%D1%88%D0%BA%D0%B0%D1%80%D0%BE%D0%B2-281379162/" target="_blank">Михайло Кашкаров</a></div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                <div><strong>Email:</strong><br><a href="mailto:bakminsterfuler@gmail.com">bakminsterfuler@gmail.com</a></div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon"><i class="fa-solid fa-paper-plane"></i></div>
+                <div><strong>Telegram:</strong><br><a href="https://t.me/MichaelKashkarov" target="_blank">@MichaelKashkarov</a></div>
+            </div>
+        </div>
+    </section>
 
         <footer>
-            <p class="lang-ru">&copy; 2026 SCI MODEL. Исследования: Михаил Кашкаров. Все права защищены.</p>
-            <p class="lang-fi">&copy; 2026 SCI MODEL. Tutkimus: Mihail Kaškarov. Kaikki oikeudet pidätetään.</p>
+            <p>&copy; 2026 SCI MODEL. Исследования: Михаил Кашкаров. Все права защищены.</p>
         </footer>
 
     </main>
@@ -962,7 +795,7 @@
         });
 
 
-        // --- Логика мультиязычности (RU / FI) ---
+        // --- Логика мультиязычности (Оставлена без изменений согласно ТЗ) ---
         const langBtn = document.getElementById('langBtn');
         
         const biographyData = {
@@ -987,7 +820,9 @@
             htmlEl.setAttribute('lang', currentLang);
             
             // Обновление текста на кнопке переключения языков
-            langBtn.textContent = currentLang === 'ru' ? 'FI' : 'RU';
+            if(langBtn) {
+                langBtn.textContent = currentLang === 'ru' ? 'FI' : 'RU';
+            }
             
             // Обновление текста биографии
             const textBlock = document.getElementById('author-text');
@@ -1002,10 +837,12 @@
             }
         }
 
-        langBtn.addEventListener('click', () => {
-            currentLang = currentLang === 'ru' ? 'fi' : 'ru';
-            updateLanguageUI();
-        });
+        if(langBtn) {
+            langBtn.addEventListener('click', () => {
+                currentLang = currentLang === 'ru' ? 'fi' : 'ru';
+                updateLanguageUI();
+            });
+        }
 
         function toggleBiography() {
             isBioExpanded = !isBioExpanded;
